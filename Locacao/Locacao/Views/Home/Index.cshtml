@@ -3,6 +3,22 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bem Vindo</h1>
+
+    <form action="/Login/CadastrarLogin">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Login</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email">
+            <small id="emailHelp" class="form-text text-muted">
+                Nunca compartilharemos seu email com mais ninguém.
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Senha</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+        </div>
+      
+        <button type="submit" class="btn btn-primary">Entrar</button> <a href="/Login/Index" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Novo Usuario</a>
+    </form>
+
 </div>
