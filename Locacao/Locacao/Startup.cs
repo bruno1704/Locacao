@@ -33,7 +33,7 @@ namespace Locacao
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            string connectionString = Configuration.GetConnectionString("Default");
+            string connectionString = Configuration.GetConnectionString("Defaul");
 
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(connectionString));
