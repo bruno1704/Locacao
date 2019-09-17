@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace Locacao.Repository
 {
-    public class UsuarioRepository
+    public class UsuarioRepository : IUsuarioRepository
     {
-        public bool CadastrarUsuario(ApplicationContext a)
-        {            
-            return true;
+        private readonly ApplicationContext context;
+      
+        public UsuarioRepository(ApplicationContext context)
+        {
+            this.context = context;
+            
+        }
+
+        public void SaveUsuario(Usuario user)
+        {
+            context.Set<Usuario>().Add(user);
+            context.SaveChanges();
         }
     }
 }

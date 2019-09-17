@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Locacao.Models;
+using Locacao.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Locacao
 {
-    public class Startup
+    public partial class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -38,11 +39,14 @@ namespace Locacao
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(connectionString));
 
+            services.AddTransient<IDataService,DataService>();
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider ServiceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -65,6 +69,10 @@ namespace Locacao
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            ServiceProvider.GetService<IDataService>().InicializaDB();
+
+
         }
     }
 }
