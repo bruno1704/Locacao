@@ -15,5 +15,15 @@ namespace Locacao.Controllers
         {
             return View();
         }
+
+        public IActionResult CadastrarLogin(string Nome, string Email, string Senha)
+        {
+            return View();
+        }
+
+        public IActionResult Acessar(string Email, string Senha)
+        {
+            return View();
+        }
     }
 }
