@@ -16,10 +16,25 @@ namespace Locacao.Repository
             
         }
 
-        public void SaveUsuario(Usuario user)
+        public void SaveUsuario(Usuario user)//void não retorna nada
         {
-            context.Set<Usuario>().Add(user);
-            context.SaveChanges();
+            context.Set<Usuario>().Add(user);//contexto é o banco dados
+            context.SaveChanges();//salva
+        }
+
+        public int BuscaUsuarioExistente (string Email)
+        {
+            var idEncontrado= context.Set<Usuario>().Where(w => w.Email == Email).Select(s => s.IdUsuario).FirstOrDefault();
+
+            if (idEncontrado==0 )
+            {
+                return 0;
+
+            }
+            else
+            {
+                return idEncontrado;
+            }
         }
     }
 }

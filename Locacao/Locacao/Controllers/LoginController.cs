@@ -16,7 +16,7 @@ namespace Locacao.Controllers
 
         public LoginController(IUsuarioRepository usuarioRepository)
         {
-            usuarioRepository = usuarioRepository;
+            this.usuarioRepository = usuarioRepository;
         }
 
         // GET: /<controller>/
@@ -27,12 +27,46 @@ namespace Locacao.Controllers
 
         public IActionResult CadastrarLogin(string Nome, string Email, string Senha)
         {
-            var usuario = new Usuario();
-            usuario.Nome = Nome;
-            usuario.Senha = Senha;
-            usuario.Email = Email;
+            var cadastrado = "";
+            if (Nome!=null && Email!=null && Senha!=null)//|| quer dizr ou != dirente de vazio null
+            {
+                var usuario = new Usuario();//cria obj usario vazio
+                usuario.Nome = Nome; //seta propriedade
+                usuario.Senha = Senha;
+                usuario.Email = Email;
 
-            usuarioRepository.SaveUsuario(usuario);
+                var usuarioEncontrado = usuarioRepository.BuscaUsuarioExistente(Email);//f11
+
+                if (usuarioEncontrado==0)
+                {
+                    usuarioRepository.SaveUsuario(usuario);//repository responsavel gravar dados no banco
+                    cadastrado = "cadastrado com sucesso";
+                }
+                else
+                {
+                    var msg = "Usuario não encontrado";
+                }
+                
+                
+            }
+            else
+            {
+                if (Nome==null)
+                {
+                    cadastrado = "nome não pode ser vazio";
+                }
+                else if (Email==null)
+                {
+                    cadastrado = "email não pode ser vazio";
+                }
+                
+                else
+                {
+
+                }
+            }
+
+          
 
             return View();
         }
