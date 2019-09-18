@@ -73,6 +73,18 @@ namespace Locacao.Controllers
 
         public IActionResult Acessar(string Email, string Senha)
         {
+
+            if (Email != null && Senha != null)
+            {
+             var usuarioEncontrado = usuarioRepository.BuscaUsuarioExistente(Email);
+;
+            }
+            else
+            {
+             var msg = "Usuario não encontrado";
+
+            }
+
             return View();
         }
     }
