@@ -7,21 +7,23 @@ using System.Threading.Tasks;
 
 namespace Locacao.Repository
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class UsuarioRepository : BaseRepository<Usuario>,IUsuarioRepository
     {
         private readonly ApplicationContext context;//variavel tipada
       
-        public UsuarioRepository(ApplicationContext context) //construtor para receber a variavel tipada context
+        public UsuarioRepository(ApplicationContext context):base(context)
         {
-            this.context = context;
+            //this.context = context;
             
         }
 
         //Metodo Salvar 
         public void SaveUsuario(Usuario user)//void não retorna nada
         {
-            context.Set<Usuario>().Add(user);//contexto é o banco de dados
+            //context.Set<Usuario>().Add(user);//contexto é o banco dados
+            dbSet.Add(user);
             context.SaveChanges();//salva
+            
         }
 
 

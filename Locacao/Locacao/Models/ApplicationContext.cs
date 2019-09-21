@@ -16,7 +16,7 @@ namespace Locacao.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Usuario>().HasKey(t => t.IdUsuario);
+            modelBuilder.Entity<Usuario>().HasKey(t => t.Id);
         }
     }
 }
