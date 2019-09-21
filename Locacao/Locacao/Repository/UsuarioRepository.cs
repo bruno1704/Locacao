@@ -45,7 +45,7 @@ namespace Locacao.Repository
             //acesso 
             //var r = listaidEncontrado[1];
 
-            var idEncontrado = context.Set<Usuario>().Where(w => w.Email == Email).Select(s => s.IdUsuario).FirstOrDefault(); // faz a busca no banco de dados
+            var idEncontrado = context.Set<Usuario>().Where(w => w.Email == Email).Select(s => s.Id).FirstOrDefault(); // faz a busca no banco de dados
 
             
             // where busca tudo
