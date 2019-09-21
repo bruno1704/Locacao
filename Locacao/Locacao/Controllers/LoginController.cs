@@ -17,7 +17,9 @@ namespace Locacao.Controllers
         public LoginController(IUsuarioRepository usuarioRepository)
         {
             this.usuarioRepository = usuarioRepository;
+
         }
+
 
         // GET: /<controller>/
         public IActionResult Index()
@@ -25,37 +27,33 @@ namespace Locacao.Controllers
             return View();
         }
 
-        public IActionResult CadastrarLogin(string Nome, string Email, string Senha)
+        public IActionResult CadastrarLogin(Usuario usuario)
         {
             var cadastrado = "";
-            if (Nome!=null && Email!=null && Senha!=null)//|| quer dizr ou != dirente de vazio null
+            if (usuario.Nome != null && usuario.Email != null && usuario.Senha != null)//|| quer dizr ou != dirente de vazio null
             {
-                var usuario = new Usuario();//cria obj usario vazio
-                usuario.Nome = Nome; //seta propriedade
-                usuario.Senha = Senha;
-                usuario.Email = Email;
+             
+              var usuarioEncontrado = usuarioRepository.BuscaUsuarioExistente(usuario.Email);//f11
 
-                var usuarioEncontrado = usuarioRepository.BuscaUsuarioExistente(Email);//f11
-
-                if (usuarioEncontrado==0)
+                if (usuarioEncontrado==0)// a parti daqui f10
                 {
                     usuarioRepository.SaveUsuario(usuario);//repository responsavel gravar dados no banco
-                    cadastrado = "cadastrado com sucesso";
+                    cadastrado = "Usuário cadastrado com sucesso";
                 }
                 else
                 {
-                    var msg = "Usuario não encontrado";
+                    var msg = "Usuario não cadastrado";
                 }
                 
                 
             }
             else
             {
-                if (Nome==null)
+                if (usuario.Nome ==null)
                 {
                     cadastrado = "nome não pode ser vazio";
                 }
-                else if (Email==null)
+                else if (usuario.Email ==null)
                 {
                     cadastrado = "email não pode ser vazio";
                 }
@@ -71,15 +69,17 @@ namespace Locacao.Controllers
             return View();
         }
 
-        public IActionResult Acessar(string Email, string Senha)
+        public IActionResult Acessar(string Email, string Senha) // logar com a senha e email
         {
-
-            if (Email != null && Senha != null)
+            //pronto faltou um negocio na view por isso nao tava conseguindo.
+            //já pode testar denovo
+            if (Email != null && Senha != null) // verifica se o email e a senha é null ou não
             {
-             var usuarioEncontrado = usuarioRepository.BuscaUsuarioExistente(Email);
+             var usuarioEncontrado = usuarioRepository.BuscaUsuarioExistente(Email); // vai para o repositório
 ;
             }
             else
+
             {
              var msg = "Usuario não encontrado";
 
