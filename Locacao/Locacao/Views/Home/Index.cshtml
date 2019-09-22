@@ -17,8 +17,13 @@
             <label for="exampleInputPassword1">Senha</label>
             <input name="Senha" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
         </div>
-      
-        <button type="submit" class="btn btn-primary">Entrar</button> <a href="/Login/Index" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Novo Usuario</a>
+
+        <button type="submit" class="btn btn-primary">Entrar</button>
+        <a href="/Login/Index" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Novo Usuario</a>
+        @*Se tiver na mesma rota não precisa passar a tag asp-controller com o nome da controller*@
+        @*<a asp-controller="Login" asp-action="Index" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Novo Usuario</a>*@
+        @*Senão passar a asp-controller e seu nome seguido da action desejada*@
+        @*<a asp-controller="Login" asp-action="Index" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Novo Usuario</a>*@
     </form>
 
 </div>
