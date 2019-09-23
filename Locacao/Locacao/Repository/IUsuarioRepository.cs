@@ -9,5 +9,8 @@ namespace Locacao.Repository
         Usuario BuscaUsuarioExistente(string Email);
 
         List<Usuario> BuscaListaUsuario();
+
+        void SetUsuarioCashId(int IdUsuario);
+        int? GetUsuarioCashId();
     }
 }

@@ -30,5 +30,20 @@ namespace Locacao.Repository
             }
 
         }
+
+        public List<Veiculo> BuscaListaVeiculo()
+        {
+
+            try
+            {
+                var lista = context.Set<Veiculo>().ToList(); // faz a busca no banco de dados
+                return lista;
+            }
+            catch (Exception e)
+            {
+                return new List<Veiculo>();
+            }
+
+        }
     }
 }

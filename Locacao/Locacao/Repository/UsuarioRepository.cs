@@ -3,17 +3,21 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Locacao.Repository
 {
     public class UsuarioRepository : BaseRepository<Usuario>,IUsuarioRepository
     {
         //private readonly ApplicationContext context;//variavel tipada
-      
-        public UsuarioRepository(ApplicationContext context):base(context)
+        private readonly IHttpContextAccessor contextAccessor;
+
+        public UsuarioRepository(ApplicationContext context, IHttpContextAccessor contextAccessor) :base(context)
         {
             //this.context = context;
-            
+            this.contextAccessor = contextAccessor;
+
+
         }
 
         //Metodo Salvar 
@@ -21,9 +25,8 @@ namespace Locacao.Repository
         {
             
 
-            if (user.Id>0)
-            {
-                user.Email = "arley.fee@hushushush.com";
+            if (user.Id>0)            {
+                
                 dbSet.Update(user);
                 context.SaveChanges();
             }
@@ -93,5 +96,16 @@ namespace Locacao.Repository
             }
 
         }
+
+        public int? GetUsuarioCashId()
+        {
+            return contextAccessor.HttpContext.Session.GetInt32("Id");
+        }
+
+        public void SetUsuarioCashId(int IdUsuario)
+        {
+            contextAccessor.HttpContext.Session.SetInt32("Id", IdUsuario);
+        }
+        
     }
 }
