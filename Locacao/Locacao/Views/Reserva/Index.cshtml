@@ -29,8 +29,18 @@
                 <tr>
                     <td>@t</td>
                     <td>@i.DataReserva</td>
-                    <td>@i.usuario.Nome</td>
+                    <td>
+                        @i.usuario.Nome
+                                        <input type="button" class="btn btn-default btn-block btn-primary btAtualizar" 
+                                               asp-controller="Reserva" asp-action="GeraPedido"
+       asp-route-id="@i.Id" value="Confirmar Pedido" id="@i.usuario.Id" /> @*onclick="Click(this)"*@
+                                    </td>
                     <td>@i.Veiculo.Marca</td>
+                    <td><div class="text-center">
+    <a asp-controller="Reserva" asp-action="GeraPedido"
+       asp-route-id="@i.Id"
+       class="btn btn-success">Reservar</a>
+</div></td>
                 </tr>
             }
         </tbody>

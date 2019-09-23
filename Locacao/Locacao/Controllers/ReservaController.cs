@@ -51,5 +51,18 @@ namespace Locacao.Controllers
             
             return View();
         }
+
+        public IActionResult GeraPedido(int Id)
+        {
+            var UsuarioLogado = usuarioRepository.GetUsuarioLogado();
+            var VeiculoSelecionado = veiculoRepository.GetVeiculoId(Id);
+            var reserva = new Reserva();
+            reserva.DataReserva = DateTime.Now;
+            reserva.usuario = UsuarioLogado;
+            reserva.Veiculo = VeiculoSelecionado;
+            reservaRepository.SaveReserva(reserva);
+
+            return View();
+        }
     }
 }
