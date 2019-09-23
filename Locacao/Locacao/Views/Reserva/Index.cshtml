@@ -13,7 +13,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Data</th>
+                <th scope="col">Data Reserva</th>
                 <th scope="col">Usuario</th>
                 <th scope="col">Veiculo</th>
             </tr>
@@ -21,9 +21,11 @@
         <tbody>
             @foreach (var i in Model)
             {
-                <tr>
-                    @i.DataReserva;
-                </tr>
+            <tr>
+                <td>@i.DataReserva</td>
+                <td>@i.usuario.Nome</td>
+                <td>@i.Veiculo.Marca</td>               
+            </tr>
             }
         </tbody>
     </table>
