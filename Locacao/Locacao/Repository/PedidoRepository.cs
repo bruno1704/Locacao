@@ -30,5 +30,19 @@ namespace Locacao.Repository
             }
 
         }
+        public List<Pedido> BuscaListaPedido()
+        {
+
+            try
+            {
+                var lista = context.Set<Pedido>().ToList(); // faz a busca no banco de dados
+                return lista;
+            }
+            catch (Exception e)
+            {
+                return new List<Pedido>();
+            }
+
+        }
     }
 }

@@ -45,7 +45,7 @@ namespace Locacao.Controllers
         }
         public IActionResult MeusPedidos()
         {
-            return View();
+            return View(pedidoRepository.BuscaListaPedido());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
