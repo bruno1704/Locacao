@@ -69,9 +69,9 @@ namespace Locacao
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles();            
+            //app.UseCookiePolicy();
             app.UseSession();
-            app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {

@@ -111,7 +111,7 @@ namespace Locacao.Repository
         public Usuario GetUsuarioLogado()
         {
             var id = contextAccessor.HttpContext.Session.GetInt32("Id");
-            id = 1;
+            
             try
             {
                 var UserLogado = context.Set<Usuario>().Where(w => w.Id == id).FirstOrDefault(); // faz a busca no banco de dados
