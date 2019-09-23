@@ -27,7 +27,7 @@ namespace Locacao.Models
         //public bool status { get; set; }
         public DateTime DataReserva { get; set; }
         public Usuario usuario { get; set; }
-        public Veiculo Veiculo { get; private set; }
+        public Veiculo Veiculo { get; set; }
     }
 
     public class Pedido : BaseModel

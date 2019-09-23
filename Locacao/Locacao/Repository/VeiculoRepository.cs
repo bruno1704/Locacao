@@ -45,5 +45,19 @@ namespace Locacao.Repository
             }
 
         }
+
+        public Veiculo GetVeiculoId(int IdVeiculo)
+        {
+            
+            try
+            {
+                var Veiculo = context.Set<Veiculo>().Where(w => w.Id == IdVeiculo).FirstOrDefault(); // faz a busca no banco de dados
+                return Veiculo;
+            }
+            catch (Exception e)
+            {
+                return new Veiculo();
+            }
+        }
     }
 }

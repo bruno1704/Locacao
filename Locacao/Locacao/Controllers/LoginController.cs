@@ -78,6 +78,7 @@ namespace Locacao.Controllers
             {
              var usuarioEncontrado = usuarioRepository.BuscaUsuarioExistente(Email); // vai para o repositório
                 //usuarioRepository.SaveUsuario(usuarioEncontrado);
+                var cash = usuarioRepository.GetUsuarioCashId();
                 if (usuarioEncontrado!=null)
                 {
                     return RedirectToAction("Index","Reserva");

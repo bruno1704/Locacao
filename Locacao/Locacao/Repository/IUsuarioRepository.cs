@@ -12,5 +12,7 @@ namespace Locacao.Repository
 
         void SetUsuarioCashId(int IdUsuario);
         int? GetUsuarioCashId();
+
+        Usuario GetUsuarioLogado();
     }
 }

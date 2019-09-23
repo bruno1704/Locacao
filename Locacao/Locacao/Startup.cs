@@ -36,6 +36,7 @@ namespace Locacao
 
             services.AddDistributedMemoryCache();
             services.AddSession();
+            services.AddHttpContextAccessor();
 
             string connectionString = Configuration.GetConnectionString("Default");
 
@@ -48,6 +49,7 @@ namespace Locacao
             services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddTransient<IVeiculoRepository, VeiculoRepository>();
             services.AddTransient<IStatusPedidoRepository, StatusPedidoRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

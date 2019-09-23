@@ -30,7 +30,7 @@
                         <div class="col-md-3 col-sm-3 col-lg-3">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <img class="img-produto-carrossel" src="/images/produtos/large_@(produto.Id).jpg" />
+                                    <img class="img-produto-carrossel" src="/imagens/large_00@(produto.Id).jpg" />
                                 </div>
                                 <div class="panel-footer produto-footer">
                                     <div class="produto-nome">@produto.Modelo</div>
@@ -38,7 +38,7 @@
                                     <div><h4><strong>R$ @produto.ValorDiaria</strong></h4></div>
                                     <div class="text-center">
                                         <a asp-controller="Reserva" asp-action="Reservar"
-                                           asp-route-codigo="@produto.Id"
+                                           asp-route-id="@produto.Id"
                                            class="btn btn-success">Reservar</a>
                                     </div>
                                 </div>

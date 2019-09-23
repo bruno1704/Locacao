@@ -1,4 +1,5 @@
 ﻿using Locacao.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,10 @@ namespace Locacao.Repository
 {
     public class ReservaRepository : BaseRepository<Reserva>, IReservaRepository
     {
-        public ReservaRepository(ApplicationContext context) : base(context)
+        private readonly IHttpContextAccessor contextAccessor;
+        public ReservaRepository(ApplicationContext context, IHttpContextAccessor contextAccessor) : base(context)
         {
+            this.contextAccessor = contextAccessor;
         }
 
         public void SaveReserva(Reserva reserva)//void não retorna nada

@@ -8,5 +8,7 @@ namespace Locacao.Repository
         void SaveReserva(Veiculo Veiculo);
         //List<Veiculo> BuscaListaReserva();
         List<Veiculo> BuscaListaVeiculo();
+
+        Veiculo GetVeiculoId(int IdVeiculo);
     }
 }

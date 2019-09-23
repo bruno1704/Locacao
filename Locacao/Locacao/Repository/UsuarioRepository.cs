@@ -73,6 +73,7 @@ namespace Locacao.Repository
             // where busca tudo
             if (idEncontrado !=null ) // se estiver 1 é pq está cadastrado, comforme o numero de Id do usuário que fica no Sql
             {
+                SetUsuarioCashId(idEncontrado.Id);
                 return idEncontrado;
 
             }
@@ -105,6 +106,22 @@ namespace Locacao.Repository
         public void SetUsuarioCashId(int IdUsuario)
         {
             contextAccessor.HttpContext.Session.SetInt32("Id", IdUsuario);
+        }
+
+        public Usuario GetUsuarioLogado()
+        {
+            var id = contextAccessor.HttpContext.Session.GetInt32("Id");
+            id = 1;
+            try
+            {
+                var UserLogado = context.Set<Usuario>().Where(w => w.Id == id).FirstOrDefault(); // faz a busca no banco de dados
+                return UserLogado;
+               // return new Usuario();
+            }
+            catch (Exception e)
+            {
+                return new Usuario();
+            }
         }
         
     }
