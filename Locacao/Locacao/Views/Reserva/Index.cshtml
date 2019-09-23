@@ -19,13 +19,19 @@
             </tr>
         </thead>
         <tbody>
+            @{
+                var t = 0;
+            }
             @foreach (var i in Model)
+                
             {
-            <tr>
-                <td>@i.DataReserva</td>
-                <td>@i.usuario.Nome</td>
-                <td>@i.Veiculo.Marca</td>               
-            </tr>
+                t++;
+                <tr>
+                    <td>@t</td>
+                    <td>@i.DataReserva</td>
+                    <td>@i.usuario.Nome</td>
+                    <td>@i.Veiculo.Marca</td>
+                </tr>
             }
         </tbody>
     </table>
