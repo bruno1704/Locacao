@@ -4,14 +4,16 @@ using Locacao.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Locacao.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20190922224620_Relacionamentos")]
+    partial class Relacionamentos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,19 +31,15 @@ namespace Locacao.Migrations
 
                     b.Property<DateTime>("DataRetirada");
 
+                    b.Property<decimal>("PrecoUnitario");
+
                     b.Property<int>("ReservaId");
-
-                    b.Property<int?>("StatusId");
-
-                    b.Property<decimal>("Total");
 
                     b.Property<int>("VeiculoId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ReservaId");
-
-                    b.HasIndex("StatusId");
 
                     b.HasIndex("VeiculoId");
 
@@ -77,7 +75,11 @@ namespace Locacao.Migrations
 
                     b.Property<string>("Descricao");
 
+                    b.Property<int?>("PedidoId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PedidoId");
 
                     b.ToTable("StatusPedido");
                 });
@@ -87,8 +89,6 @@ namespace Locacao.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Administrador");
 
                     b.Property<string>("Email");
 
@@ -114,7 +114,7 @@ namespace Locacao.Migrations
 
                     b.Property<string>("Modelo");
 
-                    b.Property<decimal>("ValorDiaria");
+                    b.Property<decimal>("ValorHora");
 
                     b.HasKey("Id");
 
@@ -127,10 +127,6 @@ namespace Locacao.Migrations
                         .WithMany()
                         .HasForeignKey("ReservaId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Locacao.Models.StatusPedido", "Status")
-                        .WithMany()
-                        .HasForeignKey("StatusId");
 
                     b.HasOne("Locacao.Models.Veiculo", "Veiculo")
                         .WithMany()
@@ -147,6 +143,13 @@ namespace Locacao.Migrations
                     b.HasOne("Locacao.Models.Usuario", "usuario")
                         .WithMany()
                         .HasForeignKey("usuarioId");
+                });
+
+            modelBuilder.Entity("Locacao.Models.StatusPedido", b =>
+                {
+                    b.HasOne("Locacao.Models.Pedido", "Pedido")
+                        .WithMany("Status")
+                        .HasForeignKey("PedidoId");
                 });
 #pragma warning restore 612, 618
         }

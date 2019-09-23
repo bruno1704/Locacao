@@ -41,6 +41,10 @@ namespace Locacao
 
             services.AddTransient<IDataService,DataService>();
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+            services.AddTransient<IReservaRepository, ReservaRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
+            services.AddTransient<IVeiculoRepository, VeiculoRepository>();
+            services.AddTransient<IStatusPedidoRepository, StatusPedidoRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

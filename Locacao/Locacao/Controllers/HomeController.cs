@@ -16,7 +16,12 @@ namespace Locacao.Controllers
 
         }
 
+       
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult MeusPedidos()
         {
             return View();
         }

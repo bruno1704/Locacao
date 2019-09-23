@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "AlterarUsuario";
+    Layout = "~/Views/Shared/LayoutLogado.cshtml";
+}
+
+
+@model List<Usuario>
+<h1>Lista Usuario</h1>
+
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                @*<th scope="col">Id</th>*@
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Administrador</th>
+            </tr>
+        </thead>
+        <tbody>
+           @{ 
+               var t = 0;
+           }
+            @foreach (var i in Model)
+            {
+                t++;
+            <tr>
+                <td>                    
+                 @t                    
+                </td>
+                <td>
+                    @i.Nome
+                </td>
+                <td>
+                    @i.Email
+                </td>
+                <td>
+                    @i.Administrador
+                </td>
+            </tr>
+              
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhum Usuario Encontrado</p>
+}
+
+@section Scripts{
+    <script type="text/javascript">
+
+        //$('#Header').hide();
+
+
+    </script>
+}

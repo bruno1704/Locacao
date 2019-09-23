@@ -1,10 +1,13 @@
 ﻿using Locacao.Models;
+using System.Collections.Generic;
 
 namespace Locacao.Repository
 {
     public interface IUsuarioRepository
     {
         void SaveUsuario(Usuario user);
-        int BuscaUsuarioExistente(string Email);
+        Usuario BuscaUsuarioExistente(string Email);
+
+        List<Usuario> BuscaListaUsuario();
     }
 }

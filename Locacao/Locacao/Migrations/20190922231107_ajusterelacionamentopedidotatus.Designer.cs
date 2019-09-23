@@ -4,14 +4,16 @@ using Locacao.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Locacao.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20190922231107_ajusterelacionamentopedidotatus")]
+    partial class ajusterelacionamentopedidotatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,11 +31,11 @@ namespace Locacao.Migrations
 
                     b.Property<DateTime>("DataRetirada");
 
+                    b.Property<decimal>("PrecoUnitario");
+
                     b.Property<int>("ReservaId");
 
                     b.Property<int?>("StatusId");
-
-                    b.Property<decimal>("Total");
 
                     b.Property<int>("VeiculoId");
 
@@ -88,8 +90,6 @@ namespace Locacao.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("Administrador");
-
                     b.Property<string>("Email");
 
                     b.Property<string>("Nome");
@@ -114,7 +114,7 @@ namespace Locacao.Migrations
 
                     b.Property<string>("Modelo");
 
-                    b.Property<decimal>("ValorDiaria");
+                    b.Property<decimal>("ValorHora");
 
                     b.HasKey("Id");
 

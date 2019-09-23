@@ -30,12 +30,13 @@ namespace Locacao.Controllers
         public IActionResult CadastrarLogin(Usuario usuario)
         {
             var cadastrado = "";
+            
             if (usuario.Nome != null && usuario.Email != null && usuario.Senha != null)//|| quer dizr ou != dirente de vazio null
             {
              
               var usuarioEncontrado = usuarioRepository.BuscaUsuarioExistente(usuario.Email);//f11
 
-                if (usuarioEncontrado==0)// a parti daqui f10
+                if (usuarioEncontrado!=null)// a parti daqui f10
                 {
                     usuarioRepository.SaveUsuario(usuario);//repository responsavel gravar dados no banco
                     cadastrado = "Usuário cadastrado com sucesso";
@@ -60,7 +61,7 @@ namespace Locacao.Controllers
                 
                 else
                 {
-
+                    cadastrado = "Senha não pode ser vazio";
                 }
             }
 
@@ -76,16 +77,31 @@ namespace Locacao.Controllers
             if (Email != null && Senha != null) // verifica se o email e a senha é null ou não
             {
              var usuarioEncontrado = usuarioRepository.BuscaUsuarioExistente(Email); // vai para o repositório
-;
+                //usuarioRepository.SaveUsuario(usuarioEncontrado);
+                if (usuarioEncontrado!=null)
+                {
+                    return RedirectToAction("Index","Reserva");
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Home");
+                }
+                
             }
             else
 
             {
              var msg = "Usuario não encontrado";
+                return RedirectToAction("Error", "Home");
 
             }
 
-            return View();
+
+        }
+        public IActionResult AlterarUsuario()
+        {
+            var lista = usuarioRepository.BuscaListaUsuario();
+            return View(lista);
         }
     }
 }

@@ -3,23 +3,23 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Bem Vindo</h1>
-
+    <h1 class="display-4">Logar</h1>
+    <br />
     <form action="/Login/Acessar">
         <div class="form-group">
             <label for="exampleInputEmail1">Login</label>
-            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email">
+            <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email">
             <small id="emailHelp" class="form-text text-muted">
                 Nunca compartilharemos seu email com mais ninguém.
             </small>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Senha</label>
-            <input name="Senha" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+            <input name="Senha" type="password" class="form-control" id="senha" placeholder="Senha">
         </div>
 
-        <button type="submit" class="btn btn-primary">Entrar</button>
-        <a href="/Login/Index" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Novo Usuario</a>
+        <button id="BtnEntrar" type="submit" class="btn btn-primary">Entrar</button>
+        <a href="/Login/Index" class="btn btn-primary" role="button" aria-pressed="true">Cadastrar-se</a>
         @*Se tiver na mesma rota não precisa passar a tag asp-controller com o nome da controller*@
         @*<a asp-controller="Login" asp-action="Index" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Novo Usuario</a>*@
         @*Senão passar a asp-controller e seu nome seguido da action desejada*@
@@ -27,3 +27,34 @@
     </form>
 
 </div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $('#Header').hide();
+        $('#BtnEntrar').hide();
+        var t = $('#email').val();
+        $('#email').on("blur", function () {
+            if (this.val != "" && $('#senha').val() != "") {
+                debugger;
+                $('#BtnEntrar').show();
+            } else {
+                $('#BtnEntrar').hide();
+                debugger;
+            }
+        });
+
+        $('#senha').on("keyup", function () {
+           
+            debugger;
+            if (this.val != ""  && $('#email').val() != "") {
+                debugger;
+                $('#BtnEntrar').show();
+            } else {
+               $('#BtnEntrar').hide();
+            }
+        });
+
+     
+    </script>
+}

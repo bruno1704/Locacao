@@ -2,14 +2,13 @@
 using System.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Locacao.Repository
 {
     public class UsuarioRepository : BaseRepository<Usuario>,IUsuarioRepository
     {
-        private readonly ApplicationContext context;//variavel tipada
+        //private readonly ApplicationContext context;//variavel tipada
       
         public UsuarioRepository(ApplicationContext context):base(context)
         {
@@ -20,15 +19,26 @@ namespace Locacao.Repository
         //Metodo Salvar 
         public void SaveUsuario(Usuario user)//void não retorna nada
         {
-            //context.Set<Usuario>().Add(user);//contexto é o banco dados
-            dbSet.Add(user);
-            context.SaveChanges();//salva
+            
+
+            if (user.Id>0)
+            {
+                user.Email = "arley.fee@hushushush.com";
+                dbSet.Update(user);
+                context.SaveChanges();
+            }
+            else
+            {
+                //context.Set<Usuario>().Add(user);//contexto é o banco dados
+                dbSet.Add(user);
+                context.SaveChanges();//salva
+            }
             
         }
 
 
         //Metodo Busca usuario
-        public int BuscaUsuarioExistente (string Email)
+        public Usuario BuscaUsuarioExistente (string Email)
         {
             // ex: para percorrer lista select mais de uma linha usa no final . Tolist
             //var listaidEncontrado = context.Set<Usuario>().Where(w => w.Email == Email).ToList();
@@ -45,19 +55,43 @@ namespace Locacao.Repository
             //acesso 
             //var r = listaidEncontrado[1];
 
-            var idEncontrado = context.Set<Usuario>().Where(w => w.Email == Email).Select(s => s.Id).FirstOrDefault(); // faz a busca no banco de dados
+            var idEncontrado=new Usuario();
+            try
+            {
+                 idEncontrado = context.Set<Usuario>().Where(w => w.Email == Email).FirstOrDefault(); // faz a busca no banco de dados
+            }
+            catch (Exception e )
+            {
+                
+            }
+           
 
             
             // where busca tudo
-            if (idEncontrado == 0 ) // se estiver 1 é pq está cadastrado, comforme o numero de Id do usuário que fica no Sql
+            if (idEncontrado !=null ) // se estiver 1 é pq está cadastrado, comforme o numero de Id do usuário que fica no Sql
             {
                 return idEncontrado;
 
             }
             else
             {
-                return 0;
+                return new Usuario();
             }
         }//f10
+
+        public List<Usuario> BuscaListaUsuario()
+        {
+
+            try
+            {
+                var lista = context.Set<Usuario>().ToList(); // faz a busca no banco de dados
+                return lista;
+            }
+            catch (Exception e)
+            {
+                return new List<Usuario>();
+            }
+
+        }
     }
 }

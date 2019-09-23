@@ -30,7 +30,7 @@ namespace Locacao.Models
 
             modelBuilder.Entity<Pedido>().HasKey(t => t.Id);
             modelBuilder.Entity<Pedido>().HasOne(t => t.Reserva);
-            modelBuilder.Entity<Pedido>().HasMany(t => t.Status).WithOne(t=>t.Pedido);
+            modelBuilder.Entity<Pedido>().HasOne(t => t.Status);
 
             modelBuilder.Entity<StatusPedido>().HasKey(t => t.Id);
             //modelBuilder.Entity<StatusPedido>().HasMany(t => t.Pedido);//.WithMany(t=>t.);

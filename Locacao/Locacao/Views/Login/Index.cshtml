@@ -1,14 +1,10 @@
-﻿
-@*@model Locacao.Models.Usuario*@
+﻿@*@model Locacao.Models.Usuario*@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
 <div class="text-center">
-    <h1 class="display-4">Bem Vindo</h1>
-
+    <h1 class="display-4">Cadastrar Usuario</h1>
+    <br />
     <form action="/Login/CadastrarLogin">
 
         <div class="form-group">
@@ -24,10 +20,20 @@
         <div class="form-group">
             <label for="exampleInputPassword1">Senha</label>
             <input name="Senha" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
-        </div>
+        </div>    
 
         <button type="submit" class="btn btn-primary">Cadastrar</button>
-        <a href="/Home/Index" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar</a>
+        <a href="/Home/Index" class="btn btn-primary" role="button" aria-pressed="true">Voltar</a>
     </form>
 
 </div>
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $('#Header').hide();
+        
+
+    </script>
+}
