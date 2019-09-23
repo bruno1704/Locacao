@@ -1,5 +1,6 @@
 ﻿using Locacao.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,10 @@ namespace Locacao.Repository
 
             try
             {
-                var lista = context.Set<Reserva>().ToList(); // faz a busca no banco de dados
+                var lista = dbSet
+                    .Include(v => v.Veiculo)
+                    .Include(u => u.usuario)
+                    .ToList(); // faz a busca no banco de dados
                 return lista;
             }
             catch (Exception e)
