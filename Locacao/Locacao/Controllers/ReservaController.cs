@@ -35,8 +35,19 @@ namespace Locacao.Controllers
 
         public IActionResult Index()
         {
-            var lista = reservaRepository.BuscaListaReserva();
-            return View(lista);
+            var Adm = usuarioRepository.GetUsuarioLogado();
+            if (!Adm.Administrador)
+            {
+                var lista = reservaRepository.BuscaListaReserva(Adm.Id);
+                return View(lista);
+            }
+            else
+            {
+                var lista = reservaRepository.BuscaListaReserva();
+                return View(lista);
+            }
+            
+           
         }
 
         public IActionResult Reservar(int Id)
@@ -47,6 +58,7 @@ namespace Locacao.Controllers
             reserva.DataReserva = DateTime.Now;
             reserva.usuario = UsuarioLogado;
             reserva.Veiculo = VeiculoSelecionado;
+            reserva.StatusPedido = statusPedidoRepository.GetstatusId(1);
              reservaRepository.SaveReserva(reserva);
             
             return View();
@@ -55,14 +67,22 @@ namespace Locacao.Controllers
         public IActionResult GeraPedido(int Id)
         {
             var UsuarioLogado = usuarioRepository.GetUsuarioLogado();
+            var reservaselecionada = reservaRepository.BuscaReservaId(Id);
+            reservaselecionada.StatusPedido = statusPedidoRepository.GetstatusId(2);
+            reservaRepository.SaveReserva(reservaselecionada);
             var VeiculoSelecionado = veiculoRepository.GetVeiculoId(Id);
-            var reserva = new Reserva();
-            reserva.DataReserva = DateTime.Now;
-            reserva.usuario = UsuarioLogado;
-            reserva.Veiculo = VeiculoSelecionado;
-            reservaRepository.SaveReserva(reserva);
-
-            return View();
+            var NewPedido = new Pedido(reservaselecionada,DateTime.Now,DateTime.Now,Convert.ToDecimal(0),statusPedidoRepository.GetstatusId(1));
+            var sucesso = pedidoRepository.SavePedido(NewPedido);
+            ViewBag.Titulo = "Pedido Realizado";
+            return View(sucesso);
         }
+
+        public IActionResult GeraPedido(Pedido Pedido)
+        {
+         
+            ViewBag.Titulo = "Pedido Fechado";
+            return View(Pedido);
+        }
+
     }
 }

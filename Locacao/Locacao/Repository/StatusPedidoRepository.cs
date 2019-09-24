@@ -11,7 +11,7 @@ namespace Locacao.Repository
         public StatusPedidoRepository(ApplicationContext context) : base(context)
         {
         }
-        public void SaveReserva(StatusPedido StatusPedido)//void não retorna nada
+        public void SaveStatus(StatusPedido StatusPedido)//void não retorna nada
         {
 
 
@@ -28,6 +28,12 @@ namespace Locacao.Repository
                 context.SaveChanges();//salva
             }
 
+        }
+
+        public StatusPedido GetstatusId(int id)//void não retorna nada
+        {
+                return dbSet.Where(s=>s.Id==id).FirstOrDefault();
+          
         }
     }
 

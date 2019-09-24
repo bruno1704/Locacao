@@ -1,4 +1,5 @@
 ﻿using Locacao.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Locacao.Repository
         {
         }
 
-        public void SaveReserva(Pedido Pedido)//void não retorna nada
+        public Pedido SavePedido(Pedido Pedido)//void não retorna nada
         {
 
 
@@ -20,13 +21,15 @@ namespace Locacao.Repository
             {
 
                 dbSet.Update(Pedido);
-                context.SaveChanges();
+                 context.SaveChanges();
+                return Pedido;
             }
             else
             {
                 //context.Set<Usuario>().Add(user);//contexto é o banco dados
                 dbSet.Add(Pedido);
                 context.SaveChanges();//salva
+                return Pedido;
             }
 
         }
@@ -35,12 +38,57 @@ namespace Locacao.Repository
 
             try
             {
-                var lista = context.Set<Pedido>().ToList(); // faz a busca no banco de dados
+                var lista = context.Set<Pedido>()
+                   .Include(r => r.Reserva).ThenInclude(u => u.Veiculo).Include(v=>v.Reserva.usuario)
+                   //.Include(r=>r.Reserva.usuario)
+                   .Include(s => s.Status)
+                   //.Include(v => v.Veiculo)
+                   //.Where(u=>u.Reserva.usuario.Id==iduser)
+                   .ToList();  // faz a busca no banco de dados
                 return lista;
             }
             catch (Exception e)
             {
                 return new List<Pedido>();
+            }
+
+        }
+
+        public List<Pedido> BuscaListaPedido(int iduser)
+        {
+
+            try
+            {
+                var lista = context.Set<Pedido>()
+                    .Include(r=>r.Reserva).ThenInclude(u => u.Veiculo).Include(v => v.Reserva.usuario)
+                    //.Include(r=>r.Reserva.usuario)
+                    .Include(s=>s.Status)
+                    //.Include(v=>v.Veiculo)
+                    //.Where(u=>u.Reserva.usuario.Id==iduser)
+                    .ToList(); // faz a busca no banco de dados
+                return lista;
+            }
+            catch (Exception e)
+            {
+                return new List<Pedido>();
+            }
+
+        }
+
+        public Pedido BuscaIdPedido(int id)
+        {
+
+            try
+            {
+                var pedido = context.Set<Pedido>()
+                    .Include(r=>r.Reserva).ThenInclude(v=>v.Veiculo)
+                    .Include(s=>s.Status)
+                    .Where(x=>x.Id==id).FirstOrDefault(); // faz a busca no banco de dados
+                return pedido;
+            }
+            catch (Exception e)
+            {
+                return new Pedido();
             }
 
         }

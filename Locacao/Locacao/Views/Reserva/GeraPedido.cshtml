@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "GeraPedido";
+    Layout = "~/Views/Shared/LayoutLogado.cshtml";
+}
+@model Pedido
+<h1>@ViewBag.Titulo</h1>
+<br />
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">IdPedido</th>
+                <th scope="col">Data do Pedido</th>
+                <th scope="col">Status</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+                           
+            <tr>
+                <td>@Model.Id</td>
+                <td>@Model.DataRetirada</td>
+                <td>
+                    @Model.Status.Descricao
+
+                </td>
+                <td>
+                    <div class="text-center">
+                        <a id="FechaRsv" asp-controller="Reserva" asp-action="Index"
+                           
+                           class="btn btn-success">Retornar</a>
+                    </div>
+                </td>
+
+            </tr>
+            
+        </tbody>
+    </table>
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+
+        $('#Header').hide();
+
+    </script>
+}
+
+

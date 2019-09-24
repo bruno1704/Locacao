@@ -108,6 +108,30 @@ namespace Locacao.Repository
             contextAccessor.HttpContext.Session.SetInt32("Id", IdUsuario);
         }
 
+        public void ClearCashId()
+        {
+            var id = contextAccessor.HttpContext.Session.GetInt32("Id");
+            contextAccessor.HttpContext.Session.Clear();
+
+             id = contextAccessor.HttpContext.Session.GetInt32("Id");
+
+        }
+
+        public bool ValidaAdm()
+        {
+            var id = contextAccessor.HttpContext.Session.GetInt32("Id");
+            var user = dbSet.Where(u => u.Id == id).SingleOrDefault();
+            if (user.Administrador)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
         public Usuario GetUsuarioLogado()
         {
             var id = contextAccessor.HttpContext.Session.GetInt32("Id");

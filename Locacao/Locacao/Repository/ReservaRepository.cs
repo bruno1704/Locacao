@@ -44,6 +44,7 @@ namespace Locacao.Repository
             {
                 var lista = dbSet
                     .Include(v => v.Veiculo)
+                    .Include(v=>v.StatusPedido)
                     .Include(u => u.usuario)
                     .ToList(); // faz a busca no banco de dados
                 return lista;
@@ -51,6 +52,45 @@ namespace Locacao.Repository
             catch (Exception e)
             {
                 return new List<Reserva>();
+            }
+
+        }
+
+        public List<Reserva> BuscaListaReserva(int idUser)
+        {
+
+            try
+            {
+                var lista = dbSet
+                    .Include(v => v.Veiculo)
+                    .Include(u => u.usuario)
+                    .Include(s=>s.StatusPedido)
+                    .Where(u=>u.usuario.Id== idUser)
+                    .ToList(); // faz a busca no banco de dados
+                return lista;
+            }
+            catch (Exception e)
+            {
+                return new List<Reserva>();
+            }
+
+        }
+
+        public Reserva BuscaReservaId(int IdReserva)
+        {
+
+            try
+            {
+                var Reserva = dbSet
+                    .Include(v => v.Veiculo)
+                    .Include(u => u.usuario)
+                    .Where(r=>r.Id==IdReserva)
+                    .FirstOrDefault(); // faz a busca no banco de dados
+                return Reserva;
+            }
+            catch (Exception e)
+            {
+                return new Reserva();
             }
 
         }

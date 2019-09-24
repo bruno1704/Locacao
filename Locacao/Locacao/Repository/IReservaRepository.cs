@@ -7,5 +7,9 @@ namespace Locacao.Repository
     {
         List<Reserva> BuscaListaReserva();
         void SaveReserva(Reserva reserva);
+
+        List<Reserva> BuscaListaReserva(int idUser);
+
+        Reserva BuscaReservaId(int IdReserva);
     }
 }

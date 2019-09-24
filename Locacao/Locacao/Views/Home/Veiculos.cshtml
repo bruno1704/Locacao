@@ -7,7 +7,7 @@
 <h1>Veiculos</h1>
 
 @model List<Veiculo>;
-<h3>Catálogo</h3>
+
 <div id="my-carousel" class="carousel slide" data-ride="carousel">
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
@@ -33,9 +33,17 @@
                                     <img class="img-produto-carrossel" src="/imagens/large_00@(produto.Id).jpg" />
                                 </div>
                                 <div class="panel-footer produto-footer">
-                                    <div class="produto-nome">@produto.Modelo</div>
-                                    <div class="produto-nome">@produto.Marca</div>
-                                    <div><h4><strong>R$ @produto.ValorDiaria</strong></h4></div>
+                                    <div class="produto-nome">@produto.Modelo - @produto.Marca</div>
+                                    @*<div class="produto-nome">@produto.Marca</div>*@
+                                    @if (produto.Completo)
+                                    {
+                                        <div class="produto-nome">Completo</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="produto-nome">Básico</div>
+                                    }
+                                    <div><h4><strong>R$ @produto.ValorDiaria Diária</strong></h4></div>
                                     <div class="text-center">
                                         <a asp-controller="Reserva" asp-action="Reservar"
                                            asp-route-id="@produto.Id"
@@ -60,4 +68,36 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+ $.ajax({
+            url: '/Login/ValidaAdm',
+            method: 'Get',
+            contentType: 'application/json',
+
+            beforeSend: function () {
+                //$("#resultado").html("ENVIANDO...");
+            }
+        })
+            .done(function (msg) {
+                debugger;
+                if (msg) {
+                    $('#FechaPdo,#FechaRsv,#AltUser,#Pedidos').removeAttr('hidden');
+                    $('#Nm').html('Pedidos');
+                }
+                else {
+                    $('#FechaPdo,#FechaRsv,#AltUser,#Pedidos').attr('hidden', 'true');
+                    $('#Nm').html('Meus Pedidos');
+                    debugger;
+                }
+            })
+            .fail(function (jqXHR, textStatus, msg) {
+                alert(msg);
+            });
+
+
+    </script>
+}
 

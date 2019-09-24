@@ -36,19 +36,19 @@
         var t = $('#email').val();
         $('#email').on("blur", function () {
             if (this.val != "" && $('#senha').val() != "") {
-                debugger;
+                
                 $('#BtnEntrar').show();
             } else {
                 $('#BtnEntrar').hide();
-                debugger;
+                
             }
         });
 
         $('#senha').on("keyup", function () {
            
-            debugger;
+            
             if (this.val != ""  && $('#email').val() != "") {
-                debugger;
+                
                 $('#BtnEntrar').show();
             } else {
                $('#BtnEntrar').hide();

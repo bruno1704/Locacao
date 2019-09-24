@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewData["Title"] = "Pedidos";
+    Layout = "~/Views/Shared/LayoutLogado.cshtml";
+}
+
+<h1>@ViewBag.Titulo</h1>
+<br />
+@model List<Pedido>
+
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Veiculo</th>
+                <th scope="col">Data Reserva</th>
+                <th scope="col">Data Pedido</th>
+                <th scope="col">Data Fechamento</th>
+                <th scope="col">Status</th>
+                <th scope="col">Valor Pedido</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var t = 0;
+            }
+            @foreach (var i in Model)
+
+            {
+                t++;
+                <tr>
+                    <td>@t</td>
+                    <td>
+                        @i.Reserva.usuario.Nome
+                    </td>
+                    <td>@i.Reserva.DataReserva</td>
+                    <td>@i.Reserva.Veiculo.Modelo</td>
+                    @if (i.Status.Descricao == "Aberto")
+                    {
+                        <td>@i.DataRetirada</td>
+                        <td>Em Fechamento</td>
+                        <td>@i.Status.Descricao</td>
+                        <td>R$ 0,00</td>
+
+                    }
+                    else
+                    {
+                        <td>@i.DataRetirada</td>
+                        <td>@i.DataEntrega</td>
+                        <td>@i.Status.Descricao</td>
+                        <td>@i.Total</td>
+                    }
+
+
+                    <td>
+                        @if (i.Status.Id == 1)
+                        {
+                            <div class="text-center">
+                                <a id="FechaRsv" asp-controller="Home" asp-action="FecharPedido"
+                                   asp-route-id="@i.Id"
+                                   class="btn btn-success">Fechar Pedido</a>
+                            </div>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhum Pedido Encontrado</p>
+}
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $.ajax({
+            url: '/Login/ValidaAdm',
+            method: 'Get',
+            contentType: 'application/json',
+
+            beforeSend: function () {
+                //$("#resultado").html("ENVIANDO...");
+            }
+        })
+            .done(function (msg) {
+                debugger;
+                if (msg) {
+                    $('#FechaPdo,#FechaRsv,#AltUser,#Pedidos').removeAttr('hidden');
+                    $('#Nm').html('Pedidos');
+                }
+                else {
+                    $('#FechaPdo,#FechaRsv,#AltUser,#Pedidos').attr('hidden', 'true');
+                    $('#Nm').html('Meus Pedidos');
+                    debugger;
+                }
+            })
+            .fail(function (jqXHR, textStatus, msg) {
+                alert(msg);
+            });
+
+
+    </script>
+}
+
+

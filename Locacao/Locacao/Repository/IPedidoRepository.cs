@@ -6,7 +6,10 @@ namespace Locacao.Repository
     public interface IPedidoRepository
     {
 
-        void SaveReserva(Pedido Pedido);
+        Pedido SavePedido(Pedido Pedido);
         List<Pedido> BuscaListaPedido();
+        List<Pedido> BuscaListaPedido(int iduser);
+
+        Pedido BuscaIdPedido(int id);
     }
 }

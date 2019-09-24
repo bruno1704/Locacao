@@ -45,7 +45,41 @@ namespace Locacao.Controllers
         }
         public IActionResult MeusPedidos()
         {
-            return View(pedidoRepository.BuscaListaPedido());
+            var id = usuarioRepository.GetUsuarioCashId();
+            return View(pedidoRepository.BuscaListaPedido(Convert.ToInt32(id)));
+        }
+
+        public IActionResult Pedidos()
+        {
+            
+
+            var Adm = usuarioRepository.GetUsuarioLogado();
+            if (!Adm.Administrador)
+            {
+                ViewBag.Titulo = "Meus Pedidos";
+                var lista = pedidoRepository.BuscaListaPedido(Adm.Id);
+                return View(lista);
+            }
+            else
+            {
+                ViewBag.Titulo = "Pedidos";
+                var lista = pedidoRepository.BuscaListaPedido();
+                return View(lista);
+            }
+            
+        }
+
+        public IActionResult FecharPedido(int Id)
+        {
+            //ViewBag.Titulo = "Pedidos";
+            var Pedido = pedidoRepository.BuscaIdPedido(Id);
+            Pedido.DataEntrega=DateTime.Now.AddDays(3);
+            var Qtddias = (Pedido.DataEntrega.Value.Day) - (Pedido.DataRetirada.Day);
+            Pedido.Total=(Qtddias*Pedido.Reserva.Veiculo.ValorDiaria);
+            Pedido.Status = statusPedidoRepository.GetstatusId(2);
+            pedidoRepository.SavePedido(Pedido);
+            //var Titulo = "Pedido Fechado";
+            return View(Pedido);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

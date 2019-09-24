@@ -5,7 +5,7 @@
 }
 @model List<Reserva>
 <h1>Lista Reservas</h1>
-
+<br />
 
 @if (Model != null && Model.Count > 0)
 {
@@ -16,6 +16,8 @@
                 <th scope="col">Data Reserva</th>
                 <th scope="col">Usuario</th>
                 <th scope="col">Veiculo</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -23,25 +25,35 @@
                 var t = 0;
             }
             @foreach (var i in Model)
-                
+
             {
                 t++;
-                <tr>
-                    <td>@t</td>
-                    <td>@i.DataReserva</td>
+            <tr>
+                <td>@t</td>
+                <td>@i.DataReserva</td>
+                <td>
+                    @i.usuario.Nome
+
+                </td>
+                <td>@i.Veiculo.Marca</td>
+                <td>@i.StatusPedido.Descricao</td>
+                @if (i.StatusPedido.Id == 1)
+                {
                     <td>
-                        @i.usuario.Nome
-                                        <input type="button" class="btn btn-default btn-block btn-primary btAtualizar" 
-                                               asp-controller="Reserva" asp-action="GeraPedido"
-       asp-route-id="@i.Id" value="Confirmar Pedido" id="@i.usuario.Id" /> @*onclick="Click(this)"*@
-                                    </td>
-                    <td>@i.Veiculo.Marca</td>
-                    <td><div class="text-center">
-    <a asp-controller="Reserva" asp-action="GeraPedido"
-       asp-route-id="@i.Id"
-       class="btn btn-success">Reservar</a>
-</div></td>
-                </tr>
+                        <div class="text-center">
+                            <a id="FechaRsv" asp-controller="Reserva" asp-action="GeraPedido"
+                               asp-route-id="@i.Id"
+                               class="btn btn-success">Confirmar Reserva</a>
+                        </div>
+                    </td>
+                }
+                <td>
+                    
+                    
+                </td>
+
+
+            </tr>
             }
         </tbody>
     </table>
@@ -54,7 +66,30 @@ else
 @section Scripts{
     <script type="text/javascript">
 
-        //$('#Header').hide();
+        $.ajax({
+            url: '/Login/ValidaAdm',
+            method: 'Get',
+            contentType: 'application/json',
+
+            beforeSend: function () {
+                //$("#resultado").html("ENVIANDO...");
+            }
+        })
+            .done(function (msg) {
+                debugger;
+                if (msg) {
+                    $('#FechaPdo,#FechaRsv,#AltUser,#Pedidos').removeAttr('hidden');
+                    $('#Nm').html('Pedidos');
+                }
+                else {
+                    $('#FechaPdo,#FechaRsv,#AltUser,#Pedidos').attr('hidden', 'true');
+                     $('#Nm').html('Meus Pedidos');
+                    debugger;
+                }
+            })
+            .fail(function (jqXHR, textStatus, msg) {
+                alert(msg);
+            });
 
 
     </script>

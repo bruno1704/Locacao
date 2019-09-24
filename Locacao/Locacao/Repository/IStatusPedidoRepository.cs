@@ -4,6 +4,7 @@ namespace Locacao.Repository
 {
     public interface IStatusPedidoRepository
     {
-        void SaveReserva(StatusPedido StatusPedido);
+        void SaveStatus(StatusPedido StatusPedido);
+        StatusPedido GetstatusId(int id);
     }
 }

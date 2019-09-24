@@ -4,14 +4,16 @@ using Locacao.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Locacao.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20190924015511_Pedidoveiculo")]
+    partial class Pedidoveiculo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,15 +55,11 @@ namespace Locacao.Migrations
 
                     b.Property<DateTime>("DataReserva");
 
-                    b.Property<int?>("StatusPedidoId");
-
                     b.Property<int?>("VeiculoId");
 
                     b.Property<int?>("usuarioId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("StatusPedidoId");
 
                     b.HasIndex("VeiculoId");
 
@@ -136,10 +134,6 @@ namespace Locacao.Migrations
 
             modelBuilder.Entity("Locacao.Models.Reserva", b =>
                 {
-                    b.HasOne("Locacao.Models.StatusPedido", "StatusPedido")
-                        .WithMany()
-                        .HasForeignKey("StatusPedidoId");
-
                     b.HasOne("Locacao.Models.Veiculo", "Veiculo")
                         .WithMany()
                         .HasForeignKey("VeiculoId");

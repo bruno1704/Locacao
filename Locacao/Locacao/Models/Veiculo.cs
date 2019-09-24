@@ -28,23 +28,25 @@ namespace Locacao.Models
         public DateTime DataReserva { get; set; }
         public Usuario usuario { get; set; }
         public Veiculo Veiculo { get; set; }
+
+        public StatusPedido StatusPedido { get; set; }
     }
 
     public class Pedido : BaseModel
     {
         [Required]
         public Reserva Reserva { get; private set; }
-        [Required]
-        public  Veiculo Veiculo { get; private set; }
+        
+       
         
         [Required]
         public DateTime DataRetirada { get; private set; }
 
         [Required]
-        public DateTime DataEntrega { get; private set; }
+        public DateTime? DataEntrega { get; set; }
 
         [Required]
-        public decimal Total { get; private set; }
+        public decimal Total { get; set; }
 
         //public List<StatusPedido> Status { get; set; } = new List<StatusPedido>();
         public StatusPedido Status { get; set; } 
@@ -54,10 +56,9 @@ namespace Locacao.Models
 
         }
 
-        public Pedido(Reserva reserva, Veiculo veiculo, DateTime dataRetirada, DateTime dataEntrega, decimal total, StatusPedido status)
+        public Pedido(Reserva reserva, DateTime dataRetirada, DateTime dataEntrega, decimal total, StatusPedido status)
         {
-            Reserva = reserva;
-            Veiculo = veiculo;
+            Reserva = reserva;            
             DataEntrega = dataEntrega;
             DataRetirada = dataRetirada;
             Total = total;

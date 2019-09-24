@@ -104,5 +104,17 @@ namespace Locacao.Controllers
             var lista = usuarioRepository.BuscaListaUsuario();
             return View(lista);
         }
+
+        public IActionResult Logout()
+        {
+             usuarioRepository.ClearCashId();
+             return RedirectToAction("Index", "Home");
+        }
+        [HttpGet]
+        public IActionResult ValidaAdm()
+        {
+            var adm=usuarioRepository.ValidaAdm();
+            return Json(adm);
+        }
     }
 }
