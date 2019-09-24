@@ -36,14 +36,16 @@ namespace Locacao.Controllers
              
               var usuarioEncontrado = usuarioRepository.BuscaUsuarioExistente(usuario.Email);//f11
 
-                if (usuarioEncontrado!=null)// a parti daqui f10
+                if (usuarioEncontrado==null)// a parti daqui f10
                 {
                     usuarioRepository.SaveUsuario(usuario);//repository responsavel gravar dados no banco
-                    cadastrado = "Usuário cadastrado com sucesso";
+                    var msg = "Usuário cadastrado com sucesso";
+                    @ViewBag.Msg = msg;
                 }
                 else
                 {
-                    var msg = "Usuario não cadastrado";
+                    var msg = "Usuario Já existe cadastrado";
+                    @ViewBag.Msg = msg;
                 }
                 
                 
@@ -52,16 +54,19 @@ namespace Locacao.Controllers
             {
                 if (usuario.Nome ==null)
                 {
-                    cadastrado = "nome não pode ser vazio";
+                    var msg = "nome não pode ser vazio";
+                    @ViewBag.Msg = msg;
                 }
                 else if (usuario.Email ==null)
                 {
-                    cadastrado = "email não pode ser vazio";
+                    var msg = "email não pode ser vazio";
+                    @ViewBag.Msg = msg;
                 }
                 
                 else
                 {
-                    cadastrado = "Senha não pode ser vazio";
+                    var msg = "Senha não pode ser vazio";
+                    @ViewBag.Msg = msg;
                 }
             }
 
@@ -115,6 +120,11 @@ namespace Locacao.Controllers
         {
             var adm=usuarioRepository.ValidaAdm();
             return Json(adm);
+        }
+        public IActionResult cadastrarcarro()
+        {
+            usuarioRepository.ClearCashId();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
