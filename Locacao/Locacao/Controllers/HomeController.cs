@@ -82,6 +82,12 @@ namespace Locacao.Controllers
             return View(Pedido);
         }
 
+        public IActionResult CadastrarCarro()
+        {
+            return View();
+
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

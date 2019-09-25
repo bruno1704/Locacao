@@ -61,7 +61,7 @@ namespace Locacao.Controllers
             reserva.StatusPedido = statusPedidoRepository.GetstatusId(1);
              reservaRepository.SaveReserva(reserva);
             
-            return View();
+            return View(reserva);
         }
 
         public IActionResult GeraPedido(int Id)

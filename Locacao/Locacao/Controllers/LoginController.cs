@@ -13,10 +13,12 @@ namespace Locacao.Controllers
     public class LoginController : Controller
     {
         private readonly IUsuarioRepository usuarioRepository;
+        private readonly IVeiculoRepository veiculoRepository;
 
-        public LoginController(IUsuarioRepository usuarioRepository)
+        public LoginController(IUsuarioRepository usuarioRepository, IVeiculoRepository veiculoRepository)
         {
             this.usuarioRepository = usuarioRepository;
+            this.veiculoRepository = veiculoRepository;
 
         }
 
@@ -36,7 +38,7 @@ namespace Locacao.Controllers
              
               var usuarioEncontrado = usuarioRepository.BuscaUsuarioExistente(usuario.Email);//f11
 
-                if (usuarioEncontrado==null)// a parti daqui f10
+                if (usuarioEncontrado.Email==null)// a parti daqui f10
                 {
                     usuarioRepository.SaveUsuario(usuario);//repository responsavel gravar dados no banco
                     var msg = "Usuário cadastrado com sucesso";
@@ -121,10 +123,12 @@ namespace Locacao.Controllers
             var adm=usuarioRepository.ValidaAdm();
             return Json(adm);
         }
-        public IActionResult cadastrarcarro()
+        public IActionResult CadastrarVeiculo(Veiculo Veiculo)
         {
-            usuarioRepository.ClearCashId();
-            return RedirectToAction("Index", "Home");
+
+            //veiculoRepository.SaveReserva(Veiculo);
+            //veiculoRepository.
+            return View();
         }
     }
 }

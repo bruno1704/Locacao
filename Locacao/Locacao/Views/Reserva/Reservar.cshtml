@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewData["Title"] = "Reservar";
+    Layout = "~/Views/Shared/LayoutLogado.cshtml";
+}
+
+@model Reserva
+<h1>Reserva Realizada</h1>
+
+<br />
+
+<h1>Usar Protocolo Para retirar Veículo</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Protocolo Id</th>
+            <th scope="col">Data do Reserva</th>
+            <th scope="col">Modelo Veículo</th>
+            <th scope="col">Status</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.DataReserva</td>
+            <td>@Model.Veiculo.Modelo</td>
+            <td>
+                @Model.StatusPedido.Descricao
+
+            </td>
+            <td>
+                <div class="text-center">
+                    <a id="FechaRsv" asp-controller="Reserva" asp-action="Index"
+                       class="btn btn-success">Retornar</a>
+                </div>
+            </td>
+
+        </tr>
+
+    </tbody>
+</table>
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $.ajax({
+            url: '/Login/ValidaAdm',
+            method: 'Get',
+            contentType: 'application/json',
+
+            beforeSend: function () {
+                //$("#resultado").html("ENVIANDO...");
+            }
+        })
+            .done(function (msg) {
+                debugger;
+                if (msg) {
+                    $('#FechaPdo,#FechaRsv,#AltUser,#Pedidos').removeAttr('hidden');
+                    $('#Nm').html('Pedidos');
+                }
+                else {
+                    $('#FechaPdo,#FechaRsv,#AltUser,#Pedidos').attr('hidden', 'true');
+                    $('#Nm').html('Meus Pedidos');
+                    debugger;
+                }
+            })
+            .fail(function (jqXHR, textStatus, msg) {
+                alert(msg);
+            });
+
+
+    </script>
+}
+
+

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "CadastrarCarro";
+    Layout = "~/Views/Shared/LayoutLogado.cshtml";
+}
+
+<h1>CadastrarCarro</h1>
+
+<div class="text-center">
+    <h1 class="display-4">Cadastrar Usuario</h1>
+    <br />
+    <form action="/Login/CadastrarVeiculo">
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Modelo</label>
+            <input name="Modelo" class="form-control" id="exampleInputPassword1" placeholder="Modelo Veiculo">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Marca</label>
+            <input name="Marca" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Marca">
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Senha</label>
+            <input name="Senha" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a href="/Home/Index" class="btn btn-primary" role="button" aria-pressed="true">Voltar</a>
+    </form>
+
+</div>
