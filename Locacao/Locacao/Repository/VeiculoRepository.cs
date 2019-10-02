@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locacao.Repository
 {
-    public class VeiculoRepository : BaseRepository<Veiculo>,IVeiculoRepository
+    public class VeiculoRepository : BaseRepository<Veiculo>, IVeiculoRepository
     {
         public VeiculoRepository(ApplicationContext context) : base(context)
         {
@@ -48,7 +48,7 @@ namespace Locacao.Repository
 
         public Veiculo GetVeiculoId(int IdVeiculo)
         {
-            
+
             try
             {
                 var Veiculo = context.Set<Veiculo>().Where(w => w.Id == IdVeiculo).FirstOrDefault(); // faz a busca no banco de dados
@@ -59,5 +59,15 @@ namespace Locacao.Repository
                 return new Veiculo();
             }
         }
+        public Veiculo Carro(Veiculo veiculo)
+        {
+
+            var Estilo = context.Set<Veiculo>().Where(w => w.Modelo == veiculo.Modelo && w.Marca == veiculo.Marca).FirstOrDefault();
+
+
+            return Estilo;
+
+        }
+
     }
 }

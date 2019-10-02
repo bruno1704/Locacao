@@ -10,5 +10,7 @@ namespace Locacao.Repository
         List<Veiculo> BuscaListaVeiculo();
 
         Veiculo GetVeiculoId(int IdVeiculo);
+
+        Veiculo Carro(Veiculo veiculo);
     }
 }

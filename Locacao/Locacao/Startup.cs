@@ -49,6 +49,7 @@ namespace Locacao
             services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddTransient<IVeiculoRepository, VeiculoRepository>();
             services.AddTransient<IStatusPedidoRepository, StatusPedidoRepository>();
+            services.AddTransient<ISeguroRepository, SeguroRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

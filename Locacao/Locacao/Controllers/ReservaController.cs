@@ -66,18 +66,22 @@ namespace Locacao.Controllers
 
         public IActionResult GeraPedido(int Id)
         {
-            var UsuarioLogado = usuarioRepository.GetUsuarioLogado();
+            
             var reservaselecionada = reservaRepository.BuscaReservaId(Id);
+
             reservaselecionada.StatusPedido = statusPedidoRepository.GetstatusId(2);
+
             reservaRepository.SaveReserva(reservaselecionada);
-            var VeiculoSelecionado = veiculoRepository.GetVeiculoId(Id);
+            
             var NewPedido = new Pedido(reservaselecionada,DateTime.Now,DateTime.Now,Convert.ToDecimal(0),statusPedidoRepository.GetstatusId(1));
+
             var sucesso = pedidoRepository.SavePedido(NewPedido);
+
             ViewBag.Titulo = "Pedido Realizado";
             return View(sucesso);
         }
 
-        public IActionResult GeraPedido(Pedido Pedido)
+        public IActionResult GGeraPedido(Pedido Pedido)
         {
          
             ViewBag.Titulo = "Pedido Fechado";

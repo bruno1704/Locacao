@@ -17,5 +17,11 @@ namespace Locacao.Repository
         void ClearCashId();
 
         bool ValidaAdm();
+
+        Usuario BuscaUsuarioporId(int Idusuario);
+
+        string BuscaNome(int Id);
+
+      
     }
 }

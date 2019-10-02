@@ -29,8 +29,8 @@
             {
                 t++;
             <tr>
-                <td>                    
-                 @t                    
+                <td>
+                    @t
                 </td>
                 <td>
                     @i.Nome
@@ -38,11 +38,23 @@
                 <td>
                     @i.Email
                 </td>
-                <td>
-                    @i.Administrador
-                </td>
+                @if (i.Administrador)
+                {
+                    <td>
+                        <a id="Adm" asp-controller="Login" asp-action="Desabilitado" asp-route-id="@i.Id"
+                           class="btn btn-success">Dasabilitar Adm</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a id="Adm" asp-controller="Login" asp-action="TornarAdm" asp-route-id="@i.Id"
+                           class="btn btn-success">Aprovar Adm</a>
+                    </td>
+                }
+
+
             </tr>
-              
             }
         </tbody>
     </table>

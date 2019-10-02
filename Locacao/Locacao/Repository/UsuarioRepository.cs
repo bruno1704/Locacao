@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Http;
 
 namespace Locacao.Repository
 {
-    public class UsuarioRepository : BaseRepository<Usuario>,IUsuarioRepository
+    public class UsuarioRepository : BaseRepository<Usuario>, IUsuarioRepository
     {
         //private readonly ApplicationContext context;//variavel tipada
         private readonly IHttpContextAccessor contextAccessor;
 
-        public UsuarioRepository(ApplicationContext context, IHttpContextAccessor contextAccessor) :base(context)
+        public UsuarioRepository(ApplicationContext context, IHttpContextAccessor contextAccessor) : base(context)
         {
             //this.context = context;
             this.contextAccessor = contextAccessor;
@@ -23,10 +23,11 @@ namespace Locacao.Repository
         //Metodo Salvar 
         public void SaveUsuario(Usuario user)//void não retorna nada
         {
-            
 
-            if (user.Id>0)            {
-                
+
+            if (user.Id > 0)
+            {
+
                 dbSet.Update(user);
                 context.SaveChanges();
             }
@@ -36,13 +37,14 @@ namespace Locacao.Repository
                 dbSet.Add(user);
                 context.SaveChanges();//salva
             }
-            
+
         }
 
-
+        
         //Metodo Busca usuario
-        public Usuario BuscaUsuarioExistente (string Email)
+        public Usuario BuscaUsuarioExistente(string Email)
         {
+            #region Ex
             // ex: para percorrer lista select mais de uma linha usa no final . Tolist
             //var listaidEncontrado = context.Set<Usuario>().Where(w => w.Email == Email).ToList();
 
@@ -57,21 +59,21 @@ namespace Locacao.Repository
             // esse exemplo eu acesso a posição desejada dentro do colchete, se add isso [1].Nome;
             //acesso 
             //var r = listaidEncontrado[1];
-
-            var idEncontrado=new Usuario();
+            #endregion
+            var idEncontrado = new Usuario();
             try
             {
-                 idEncontrado = context.Set<Usuario>().Where(w => w.Email == Email).FirstOrDefault(); // faz a busca no banco de dados
+                idEncontrado = context.Set<Usuario>().Where(w => w.Email == Email).FirstOrDefault(); // faz a busca no banco de dados
             }
-            catch (Exception e )
+            catch (Exception e)
             {
-                
-            }
-           
 
-            
+            }
+
+
+
             // where busca tudo
-            if (idEncontrado !=null ) // se estiver 1 é pq está cadastrado, comforme o numero de Id do usuário que fica no Sql
+            if (idEncontrado != null) // se estiver 1 é pq está cadastrado, comforme o numero de Id do usuário que fica no Sql
             {
                 SetUsuarioCashId(idEncontrado.Id);
                 return idEncontrado;
@@ -113,7 +115,7 @@ namespace Locacao.Repository
             var id = contextAccessor.HttpContext.Session.GetInt32("Id");
             contextAccessor.HttpContext.Session.Clear();
 
-             id = contextAccessor.HttpContext.Session.GetInt32("Id");
+            id = contextAccessor.HttpContext.Session.GetInt32("Id");
 
         }
 
@@ -135,18 +137,41 @@ namespace Locacao.Repository
         public Usuario GetUsuarioLogado()
         {
             var id = contextAccessor.HttpContext.Session.GetInt32("Id");
-            
+
             try
             {
                 var UserLogado = context.Set<Usuario>().Where(w => w.Id == id).FirstOrDefault(); // faz a busca no banco de dados
                 return UserLogado;
-               // return new Usuario();
+                // return new Usuario();
             }
             catch (Exception e)
             {
                 return new Usuario();
             }
         }
-        
+        public Usuario BuscaUsuarioporId(int Idusuario)
+        {
+            var usuario = context.Set<Usuario>().Where(w => w.Id == Idusuario).FirstOrDefault();
+
+            return usuario;
+
+        }
+
+        public string BuscaNome(int Id)
+        {
+            if (Id==1)
+            {
+                var retornostring = "é adm";
+
+                return retornostring;
+            }
+            else
+            {
+                var retornostring = "ñ é adm";
+                return retornostring;
+            }
+
+        }
+
     }
 }
