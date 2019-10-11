@@ -14,6 +14,6 @@ namespace GestaoDeFrota
         public string Email { get; set; }
 
         public bool Administrador { get; set; }
-        public object Veiculo { get; set; }
+        //public object Veiculo { get; set; }
     }
 }
