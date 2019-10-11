@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GestaoDeFrota.inicio.Repositories
+{
+    interface IVeiculoRepository
+    {
+        void SaveVeiculo(Veiculo Veiculo);
+
+        Veiculo BuscausuarioExistente(Usuario Usuario);
+
+        List<Veiculo> BuscaListaVeiculo();
+
+        Veiculo RetornarPorVeiculo(string veiculo);
+
+        Veiculo RetornarPorCompleto(string Completo);
+
+
+
+    }
+}

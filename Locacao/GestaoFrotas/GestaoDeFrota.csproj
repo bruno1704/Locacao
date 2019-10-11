@@ -218,10 +218,12 @@
     <Compile Include="Repositories\ISeguroRepository.cs" />
     <Compile Include="Repositories\ISinistroRepository.cs" />
     <Compile Include="Repositories\IUsuarioRepository.cs" />
+    <Compile Include="Repositories\IVeiculoRepository.cs" />
     <Compile Include="Repositories\MultaRepository.cs" />
     <Compile Include="Repositories\SeguroRepository.cs" />
     <Compile Include="Repositories\SinistroRepository.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
+    <Compile Include="Repositories\VeiculoRepository.cs" />
     <Compile Include="Testefrm.cs">
       <SubType>Form</SubType>
     </Compile>

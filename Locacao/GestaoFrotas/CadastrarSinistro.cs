@@ -30,6 +30,7 @@ namespace GestaoDeFrota.inicio
             //sinistro.Veiculo = TxtVeiculo.Text;//TxtVeiculo ñ vai da certo vc ta passando um string e ele espera
             //objeto veiculo
             sinistro.Local = TxtLocal.Text;
+            //sinistro.PerdaTotal = TxtPerdaTotal.Text
             //sinistro.PerdaTotal = TxtPerdaTotal.Text;//é string e precisa ser bool
             sinistro.Usuario = reposUsuario.RetornarPorEmail(TxtUsuario.Text); //vc tem que fazer assim cria os repositoria pra pegar pelo nome
                 //TxtUsuario.Text;//passando string e precisa de um usuario

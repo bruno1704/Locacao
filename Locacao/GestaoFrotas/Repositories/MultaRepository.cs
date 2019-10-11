@@ -37,7 +37,7 @@ namespace GestaoDeFrota.inicio.Repositories
 
         public Multa BuscaUsuarioExistente(Usuario Usuario)
         {
-           
+
             var idEncontrado = new Multa();
             try
             {
@@ -78,5 +78,20 @@ namespace GestaoDeFrota.inicio.Repositories
 
         }
 
+        public Usuario RetornarPorEmail(string nome)
+        {
+            var usuario = context.Set<Usuario>().Where(w => w.Nome == nome).FirstOrDefault();
+
+            return usuario;
+
+        }
+        public Multa RetornarMultaPorVeiculo(Veiculo veiculo)
+        {
+            var multa = context.Set<Multa>().Where(w => w.Veiculo == veiculo).FirstOrDefault();
+
+            return multa;
+
+
+        }
     }
 }

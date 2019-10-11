@@ -26,6 +26,8 @@ namespace GestaoDeFrota
 
         Usuario RetornarPorEmail(string nome);
 
+        
+
         //string MultaRepository 
     }
 }

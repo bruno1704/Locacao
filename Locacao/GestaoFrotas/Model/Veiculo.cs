@@ -8,12 +8,16 @@ namespace GestaoDeFrota
 {
     public class Veiculo : BaseModel
     {
+        internal string veiculo;
+        internal string completo;
+
         public string Modelo { get; set; }
         //public DetalheVeiculo DetalheVeiculo { get; set; }
         public bool Completo { get; set; }
         public string Marca { get; set; }
         public decimal ValorDiaria { get; set; }
-
+        public Usuario Usuario { get; set; }
+       
     }
 
     //public class DetalheVeiculo:BaseModel

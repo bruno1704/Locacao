@@ -32,9 +32,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.TxtSenha = new System.Windows.Forms.TextBox();
-            this.TxtEmail = new System.Windows.Forms.TextBox();
             this.TxtMarca = new System.Windows.Forms.TextBox();
+            this.TxtCompleto = new System.Windows.Forms.TextBox();
+            this.TxtModelo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // BtnCadastrar
@@ -50,7 +50,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 133);
+            this.label3.Location = new System.Drawing.Point(31, 129);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 12;
@@ -74,26 +74,26 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Modelo";
             // 
-            // TxtSenha
-            // 
-            this.TxtSenha.Location = new System.Drawing.Point(94, 133);
-            this.TxtSenha.Name = "TxtSenha";
-            this.TxtSenha.Size = new System.Drawing.Size(134, 20);
-            this.TxtSenha.TabIndex = 9;
-            // 
-            // TxtEmail
-            // 
-            this.TxtEmail.Location = new System.Drawing.Point(94, 90);
-            this.TxtEmail.Name = "TxtEmail";
-            this.TxtEmail.Size = new System.Drawing.Size(236, 20);
-            this.TxtEmail.TabIndex = 8;
-            // 
             // TxtMarca
             // 
-            this.TxtMarca.Location = new System.Drawing.Point(94, 54);
+            this.TxtMarca.Location = new System.Drawing.Point(94, 126);
             this.TxtMarca.Name = "TxtMarca";
-            this.TxtMarca.Size = new System.Drawing.Size(236, 20);
-            this.TxtMarca.TabIndex = 7;
+            this.TxtMarca.Size = new System.Drawing.Size(134, 20);
+            this.TxtMarca.TabIndex = 9;
+            // 
+            // TxtCompleto
+            // 
+            this.TxtCompleto.Location = new System.Drawing.Point(94, 90);
+            this.TxtCompleto.Name = "TxtCompleto";
+            this.TxtCompleto.Size = new System.Drawing.Size(236, 20);
+            this.TxtCompleto.TabIndex = 8;
+            // 
+            // TxtModelo
+            // 
+            this.TxtModelo.Location = new System.Drawing.Point(94, 54);
+            this.TxtModelo.Name = "TxtModelo";
+            this.TxtModelo.Size = new System.Drawing.Size(236, 20);
+            this.TxtModelo.TabIndex = 7;
             // 
             // CadastrarVeiculo
             // 
@@ -104,9 +104,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.TxtSenha);
-            this.Controls.Add(this.TxtEmail);
             this.Controls.Add(this.TxtMarca);
+            this.Controls.Add(this.TxtCompleto);
+            this.Controls.Add(this.TxtModelo);
             this.Name = "CadastrarVeiculo";
             this.Text = "CadastrarVeiculo";
             this.ResumeLayout(false);
@@ -120,8 +120,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TxtSenha;
-        private System.Windows.Forms.TextBox TxtEmail;
         private System.Windows.Forms.TextBox TxtMarca;
+        private System.Windows.Forms.TextBox TxtCompleto;
+        private System.Windows.Forms.TextBox TxtModelo;
     }
 }
