@@ -7,24 +7,22 @@ using System.Threading.Tasks;
 namespace GestaoDeFrota
 {
     public class Veiculo : BaseModel
-    {
-        internal string veiculo;
-        internal string completo;
-
-        public string Modelo { get; set; }
-        //public DetalheVeiculo DetalheVeiculo { get; set; }
+    {       
+        public string Modelo { get; set; }        
         public bool Completo { get; set; }
         public string Marca { get; set; }
+        public string Placa { get; set; }
         public decimal ValorDiaria { get; set; }
-        public Usuario Usuario { get; set; }
-       
+        
     }
 
-    //public class DetalheVeiculo:BaseModel
-    //{
-    //    public bool Completo { get; set; }
-    //    public string Marca { get; set; }
-    //}
+   public class EntradaSaidaVeiculo: BaseModel
+    {
+        public int UsuarioId { get; set; }
+        public int VeiculoId { get; set; }
+        public DateTime Retirada { get; set; }
+        public DateTime Entrega { get; set; }
+    }
 
     public class Reserva : BaseModel
     {
@@ -40,8 +38,6 @@ namespace GestaoDeFrota
     {
         [Required]
         public Reserva Reserva { get; private set; }
-
-
 
         [Required]
         public DateTime DataRetirada { get; private set; }
@@ -59,7 +55,6 @@ namespace GestaoDeFrota
         {
 
         }
-
         public Pedido(Reserva reserva, DateTime dataRetirada, DateTime dataEntrega, decimal total, StatusPedido status)
         {
             Reserva = reserva;
@@ -69,10 +64,8 @@ namespace GestaoDeFrota
             Status = status;
         }
     }
-
     public class StatusPedido : BaseModel
     {
         public string Descricao { get; set; }
-
     }
 }

@@ -35,6 +35,22 @@ namespace Locacao.Models
             modelBuilder.Entity<StatusPedido>().HasKey(t => t.Id);
             //modelBuilder.Entity<StatusPedido>().HasMany(t => t.Pedido);//.WithMany(t=>t.);
 
+            modelBuilder.Entity<Multa>().HasKey(t=>t.Id);
+            modelBuilder.Entity<Multa>().HasOne(t=>t.Usuario);
+            modelBuilder.Entity<Multa>().HasOne(t => t.Veiculo);
+
+            modelBuilder.Entity<Sinistro>().HasKey(t => t.Id);
+            modelBuilder.Entity<Sinistro>().HasOne(t => t.Usuario);
+            modelBuilder.Entity<Sinistro>().HasOne(t => t.Veiculo);
+
+            modelBuilder.Entity<Seguro>().HasKey(t => t.Id);
+            modelBuilder.Entity<Seguro>().HasOne(t => t.Usuario);
+            modelBuilder.Entity<Seguro>().HasOne(t => t.Veiculo);
+
+            modelBuilder.Entity<EntradaSaidaVeiculo>().HasKey(t => t.Id);
+            modelBuilder.Entity<EntradaSaidaVeiculo>().HasOne(t => t.Usuario);
+            modelBuilder.Entity<EntradaSaidaVeiculo>().HasOne(t => t.Veiculo);
+
         }
     }
 }

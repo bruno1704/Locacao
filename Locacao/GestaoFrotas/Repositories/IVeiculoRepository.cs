@@ -10,13 +10,17 @@ namespace GestaoDeFrota.inicio.Repositories
     {
         void SaveVeiculo(Veiculo Veiculo);
 
-        Veiculo BuscausuarioExistente(Usuario Usuario);
+        Veiculo BuscausuarioExistente(string Marca);
 
         List<Veiculo> BuscaListaVeiculo();
 
         Veiculo RetornarPorVeiculo(string veiculo);
 
         Veiculo RetornarPorCompleto(string Completo);
+
+        Veiculo RetornarPorNome(string veiculo);
+
+        Veiculo RetornarPorPlaca(String Placa);
 
 
 

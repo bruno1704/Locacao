@@ -34,7 +34,7 @@ namespace GestaoDeFrota.inicio.Repositories
             var idEncontrado = new Sinistro();
             try
             {
-                idEncontrado = context.Set<Sinistro>().Where(w => w.Usuario == Usuario).FirstOrDefault(); // faz a busca no banco de dados
+                idEncontrado = context.Set<Sinistro>().Where(w => w.UsuarioId == Usuario.Id).FirstOrDefault(); // faz a busca no banco de dados
             }
             catch (Exception e)
             {
@@ -74,7 +74,9 @@ namespace GestaoDeFrota.inicio.Repositories
             return usuario;
         }
 
-            
+        
+
+
 
 
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GestaoDeFrota.inicio.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,15 +26,10 @@ namespace GestaoDeFrota
 
             modelBuilder.Entity<Usuario>().HasKey(t => t.Id);
             //modelBuilder.Entity<Usuario>().HasMany(t=>t.res)
-
             modelBuilder.Entity<Veiculo>().HasKey(t => t.Id);
-
-
-
             modelBuilder.Entity<Reserva>().HasKey(t => t.Id);
             modelBuilder.Entity<Reserva>().HasOne(t => t.usuario);
             modelBuilder.Entity<Reserva>().HasOne(t => t.Veiculo);
-
 
             modelBuilder.Entity<Pedido>().HasKey(t => t.Id);
             modelBuilder.Entity<Pedido>().HasOne(t => t.Reserva);
@@ -41,6 +37,19 @@ namespace GestaoDeFrota
 
             modelBuilder.Entity<StatusPedido>().HasKey(t => t.Id);
             //modelBuilder.Entity<StatusPedido>().HasMany(t => t.Pedido);//.WithMany(t=>t.);
+            modelBuilder.Entity<Multa>().HasKey(t => t.Id);
+           //modelBuilder.Entity<Multa>().HasOne(t => t.Usuario);
+            //modelBuilder.Entity<Multa>().HasOne(t => t.Veiculo);
+
+            modelBuilder.Entity<Sinistro>().HasKey(t => t.Id);
+            //modelBuilder.Entity<Sinistro>().HasOne(t => t.Usuario);
+            //modelBuilder.Entity<Sinistro>().HasOne(t => t.Veiculo);
+
+            modelBuilder.Entity<Seguro>().HasKey(t => t.Id);
+            //modelBuilder.Entity<Seguro>().HasOne(t => t.Usuario);
+            //modelBuilder.Entity<Seguro>().HasOne(t => t.Veiculo);
+
+            modelBuilder.Entity<EntradaSaidaVeiculo>().HasKey(t => t.Id);
 
         }
     }

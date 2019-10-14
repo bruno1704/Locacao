@@ -26,12 +26,13 @@ namespace GestaoDeFrota.inicio
         {
             var veiculo = new Veiculo();
             veiculo.Modelo = TxtModelo.Text;
-            veiculo.Completo = true;//reposCompleto.RetornarPorCompleto(TxtCompleto.Text); //coverter
+            veiculo.Completo = ChkCompleto.Checked;
             veiculo.Marca = TxtMarca.Text;
-
+            veiculo.Placa = TxtPlaca.Text;
+            veiculo.ValorDiaria = 0;
             
 
-            if (veiculo.Modelo != null && veiculo.Completo != true && veiculo.Marca != null)
+            if (veiculo.Modelo != "" && veiculo.Marca != "")
             {
                 repos.SaveVeiculo(veiculo);
 
@@ -39,14 +40,14 @@ namespace GestaoDeFrota.inicio
             }
             else
             {
-                if (veiculo.Modelo == null)
+                if (veiculo.Modelo == "")
                 {
                     MessageBox.Show("O campo Modelo Não pode ser vazio");
 
                 }
                 else if(veiculo.Completo == true )
                 {
-                    MessageBox.Show("O campo Modelo Não pode ser vazio");
+                    MessageBox.Show("O campo Completo Não pode ser vazio");
 
                 }
                 else
@@ -58,6 +59,11 @@ namespace GestaoDeFrota.inicio
 
 
             }
+
+        }
+
+        private void ChkCompleto_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }

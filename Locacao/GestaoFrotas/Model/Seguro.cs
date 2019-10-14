@@ -8,11 +8,12 @@ namespace GestaoDeFrota.inicio.Model
 {
     public class Seguro:BaseModel
     {
-        public Veiculo Veiculo { get; set; }
-        public decimal Valor { get; set; }
-        public Usuario Usuario { get; internal set; } //ou vc vai ter um obj Seguro Seguro ou Usuario Usuario Lé o codigo dps
-        //ache o erro
-        
-        //um obj usuario nao pode ter o nome do seu objeto seguro
+        public int UsuarioId { get; set; }
+        public int VeiculoId { get; set; }   
+        public decimal Valor { get;  set; }
+        public DateTime Inicio { get; set; }
+        public bool PerdaTotal { get; set; }
+        public DateTime Final { get; set; }
+
     }
 }

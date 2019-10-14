@@ -25,11 +25,14 @@ namespace GestaoDeFrota.inicio
             usuario.Nome = TxtNome.Text;
             usuario.Email = TxtEmail.Text;
             usuario.Senha = TxtSenha.Text;
+            usuario.Administrador = Master.Checked;
+
             
             if (usuario.Nome!="" && usuario.Senha!="" && usuario.Email!="")
             {
                 repos.SaveUsuario(usuario);
-                MessageBox.Show("usuario Cadastrado com sucesso");
+                var msg = MessageBox.Show("Usuario Cadastrado com sucesso","",MessageBoxButtons.OK);
+        
             }
             else
             {
@@ -49,6 +52,11 @@ namespace GestaoDeFrota.inicio
         }
 
         private void TxtNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Master_CheckedChanged(object sender, EventArgs e)
         {
 
         }

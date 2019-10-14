@@ -4,14 +4,16 @@ using Locacao.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Locacao.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20191013150310_seguro_add_colun")]
+    partial class seguro_add_colun
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,36 +21,11 @@ namespace Locacao.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Locacao.Models.EntradaSaidaVeiculo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Entrega");
-
-                    b.Property<DateTime>("Retirada");
-
-                    b.Property<int?>("UsuarioId");
-
-                    b.Property<int?>("VeiculoId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.HasIndex("VeiculoId");
-
-                    b.ToTable("EntradaSaidaVeiculo");
-                });
-
             modelBuilder.Entity("Locacao.Models.Multa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Data");
 
                     b.Property<string>("Local");
 
@@ -217,24 +194,11 @@ namespace Locacao.Migrations
 
                     b.Property<string>("Modelo");
 
-                    b.Property<string>("Placa");
-
                     b.Property<decimal>("ValorDiaria");
 
                     b.HasKey("Id");
 
                     b.ToTable("Veiculo");
-                });
-
-            modelBuilder.Entity("Locacao.Models.EntradaSaidaVeiculo", b =>
-                {
-                    b.HasOne("Locacao.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId");
-
-                    b.HasOne("Locacao.Models.Veiculo", "Veiculo")
-                        .WithMany()
-                        .HasForeignKey("VeiculoId");
                 });
 
             modelBuilder.Entity("Locacao.Models.Multa", b =>

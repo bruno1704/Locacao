@@ -40,6 +40,11 @@ namespace GestaoDeFrota
 
         }
 
+        internal IEnumerable<object> BuscarListaUsuario()
+        {
+            throw new NotImplementedException();
+        }
+
 
         //Metodo Busca usuario
         public Usuario BuscaUsuarioExistente(string Email)

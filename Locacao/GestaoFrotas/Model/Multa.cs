@@ -8,14 +8,11 @@ namespace GestaoDeFrota.inicio.Model
 {
     public class Multa:BaseModel
     {
-        
-        public decimal Valor { get; set; }
+        public int UsuarioId { get; set; }
+        public int VeiculoId { get; set; }
         public string Local { get; set; }
-
-        public Usuario Usuario { get; set; }
-
-        public Veiculo Veiculo { get; set; }
-
+        public DateTime Data { get; set; }
+        public decimal Valor { get; set; }
         public int Ponto { get; set; }
     }
 }

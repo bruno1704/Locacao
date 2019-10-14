@@ -37,12 +37,23 @@
             this.editarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.multaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuMcadastrar = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.editarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.sinistoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.seguroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastrarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.entradaSaidaVeiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.retiradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entregaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.DtgMenuP = new System.Windows.Forms.DataGridView();
+            this.BtnGravar = new System.Windows.Forms.Button();
+            this.TxtTitulo = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgMenuP)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -51,7 +62,9 @@
             this.testeToolStripMenuItem,
             this.veiculoToolStripMenuItem,
             this.multaToolStripMenuItem,
-            this.sinistoToolStripMenuItem});
+            this.sinistoToolStripMenuItem,
+            this.seguroToolStripMenuItem,
+            this.entradaSaidaVeiculoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -71,15 +84,16 @@
             // MnuCadastrar
             // 
             this.MnuCadastrar.Name = "MnuCadastrar";
-            this.MnuCadastrar.Size = new System.Drawing.Size(180, 22);
+            this.MnuCadastrar.Size = new System.Drawing.Size(124, 22);
             this.MnuCadastrar.Text = "Cadastrar";
             this.MnuCadastrar.Click += new System.EventHandler(this.MnuCadastrar_Click);
             // 
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.editarToolStripMenuItem.Text = "Editar";
+            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
             // 
             // veiculoToolStripMenuItem
             // 
@@ -94,15 +108,16 @@
             // MnuVCadastrar
             // 
             this.MnuVCadastrar.Name = "MnuVCadastrar";
-            this.MnuVCadastrar.Size = new System.Drawing.Size(180, 22);
+            this.MnuVCadastrar.Size = new System.Drawing.Size(124, 22);
             this.MnuVCadastrar.Text = "Cadastrar";
             this.MnuVCadastrar.Click += new System.EventHandler(this.MnuVCadastrar_Click);
             // 
             // editarToolStripMenuItem1
             // 
             this.editarToolStripMenuItem1.Name = "editarToolStripMenuItem1";
-            this.editarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.editarToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
             this.editarToolStripMenuItem1.Text = "Editar";
+            this.editarToolStripMenuItem1.Click += new System.EventHandler(this.editarToolStripMenuItem1_Click);
             // 
             // multaToolStripMenuItem
             // 
@@ -116,22 +131,16 @@
             // MnuMcadastrar
             // 
             this.MnuMcadastrar.Name = "MnuMcadastrar";
-            this.MnuMcadastrar.Size = new System.Drawing.Size(180, 22);
+            this.MnuMcadastrar.Size = new System.Drawing.Size(124, 22);
             this.MnuMcadastrar.Text = "Cadastrar";
             this.MnuMcadastrar.Click += new System.EventHandler(this.MnuMcadastrar_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(12, 27);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(776, 411);
-            this.panel1.TabIndex = 1;
             // 
             // editarToolStripMenuItem2
             // 
             this.editarToolStripMenuItem2.Name = "editarToolStripMenuItem2";
-            this.editarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.editarToolStripMenuItem2.Size = new System.Drawing.Size(124, 22);
             this.editarToolStripMenuItem2.Text = "Editar";
+            this.editarToolStripMenuItem2.Click += new System.EventHandler(this.editarToolStripMenuItem2_Click);
             // 
             // sinistoToolStripMenuItem
             // 
@@ -146,7 +155,7 @@
             // cadastrarToolStripMenuItem
             // 
             this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
-            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.cadastrarToolStripMenuItem.Text = "Cadastrar";
             this.cadastrarToolStripMenuItem.Click += new System.EventHandler(this.CadastrarToolStripMenuItem_Click);
             // 
@@ -155,6 +164,92 @@
             this.editarToolStripMenuItem3.Name = "editarToolStripMenuItem3";
             this.editarToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.editarToolStripMenuItem3.Text = "Editar";
+            this.editarToolStripMenuItem3.Click += new System.EventHandler(this.editarToolStripMenuItem3_Click);
+            // 
+            // seguroToolStripMenuItem
+            // 
+            this.seguroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrarToolStripMenuItem1,
+            this.editarToolStripMenuItem4});
+            this.seguroToolStripMenuItem.Name = "seguroToolStripMenuItem";
+            this.seguroToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.seguroToolStripMenuItem.Text = "Seguro";
+            // 
+            // cadastrarToolStripMenuItem1
+            // 
+            this.cadastrarToolStripMenuItem1.Name = "cadastrarToolStripMenuItem1";
+            this.cadastrarToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.cadastrarToolStripMenuItem1.Text = "Cadastrar";
+            this.cadastrarToolStripMenuItem1.Click += new System.EventHandler(this.cadastrarToolStripMenuItem1_Click);
+            // 
+            // editarToolStripMenuItem4
+            // 
+            this.editarToolStripMenuItem4.Name = "editarToolStripMenuItem4";
+            this.editarToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.editarToolStripMenuItem4.Text = "Editar";
+            this.editarToolStripMenuItem4.Click += new System.EventHandler(this.editarToolStripMenuItem4_Click);
+            // 
+            // entradaSaidaVeiculoToolStripMenuItem
+            // 
+            this.entradaSaidaVeiculoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.retiradaToolStripMenuItem,
+            this.entregaToolStripMenuItem});
+            this.entradaSaidaVeiculoToolStripMenuItem.Name = "entradaSaidaVeiculoToolStripMenuItem";
+            this.entradaSaidaVeiculoToolStripMenuItem.Size = new System.Drawing.Size(131, 20);
+            this.entradaSaidaVeiculoToolStripMenuItem.Text = "Entrada Saida Veiculo";
+            // 
+            // retiradaToolStripMenuItem
+            // 
+            this.retiradaToolStripMenuItem.Name = "retiradaToolStripMenuItem";
+            this.retiradaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.retiradaToolStripMenuItem.Text = "Retirada";
+            this.retiradaToolStripMenuItem.Click += new System.EventHandler(this.retiradaToolStripMenuItem_Click);
+            // 
+            // entregaToolStripMenuItem
+            // 
+            this.entregaToolStripMenuItem.Name = "entregaToolStripMenuItem";
+            this.entregaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.entregaToolStripMenuItem.Text = "Entrega";
+            this.entregaToolStripMenuItem.Click += new System.EventHandler(this.entregaToolStripMenuItem_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.TxtTitulo);
+            this.panel1.Controls.Add(this.BtnGravar);
+            this.panel1.Controls.Add(this.DtgMenuP);
+            this.panel1.Location = new System.Drawing.Point(12, 27);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(776, 411);
+            this.panel1.TabIndex = 1;
+            // 
+            // DtgMenuP
+            // 
+            this.DtgMenuP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgMenuP.Location = new System.Drawing.Point(3, 54);
+            this.DtgMenuP.Name = "DtgMenuP";
+            this.DtgMenuP.Size = new System.Drawing.Size(744, 290);
+            this.DtgMenuP.TabIndex = 0;
+            // 
+            // BtnGravar
+            // 
+            this.BtnGravar.Location = new System.Drawing.Point(631, 366);
+            this.BtnGravar.Name = "BtnGravar";
+            this.BtnGravar.Size = new System.Drawing.Size(116, 23);
+            this.BtnGravar.TabIndex = 1;
+            this.BtnGravar.Text = "Gravar";
+            this.BtnGravar.UseVisualStyleBackColor = true;
+            this.BtnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
+            // 
+            // TxtTitulo
+            // 
+            this.TxtTitulo.Enabled = false;
+            this.TxtTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTitulo.Location = new System.Drawing.Point(15, 16);
+            this.TxtTitulo.MaximumSize = new System.Drawing.Size(150, 50);
+            this.TxtTitulo.Name = "TxtTitulo";
+            this.TxtTitulo.ReadOnly = true;
+            this.TxtTitulo.Size = new System.Drawing.Size(150, 26);
+            this.TxtTitulo.TabIndex = 2;
             // 
             // MenuPrincipal
             // 
@@ -168,6 +263,9 @@
             this.Text = "MenuPrincipal";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtgMenuP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +287,14 @@
         private System.Windows.Forms.ToolStripMenuItem sinistoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem seguroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem4;
+        private System.Windows.Forms.DataGridView DtgMenuP;
+        private System.Windows.Forms.ToolStripMenuItem entradaSaidaVeiculoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem retiradaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entregaToolStripMenuItem;
+        private System.Windows.Forms.Button BtnGravar;
+        private System.Windows.Forms.TextBox TxtTitulo;
     }
 }

@@ -4,70 +4,22 @@ using Locacao.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Locacao.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20191013020826_ordem_colunas")]
+    partial class ordem_colunas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Locacao.Models.EntradaSaidaVeiculo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Entrega");
-
-                    b.Property<DateTime>("Retirada");
-
-                    b.Property<int?>("UsuarioId");
-
-                    b.Property<int?>("VeiculoId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.HasIndex("VeiculoId");
-
-                    b.ToTable("EntradaSaidaVeiculo");
-                });
-
-            modelBuilder.Entity("Locacao.Models.Multa", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Data");
-
-                    b.Property<string>("Local");
-
-                    b.Property<int>("Ponto");
-
-                    b.Property<int?>("UsuarioId");
-
-                    b.Property<decimal>("Valor");
-
-                    b.Property<int?>("VeiculoId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.HasIndex("VeiculoId");
-
-                    b.ToTable("Multa");
-                });
 
             modelBuilder.Entity("Locacao.Models.Pedido", b =>
                 {
@@ -120,58 +72,6 @@ namespace Locacao.Migrations
                     b.ToTable("Reserva");
                 });
 
-            modelBuilder.Entity("Locacao.Models.Seguro", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Final");
-
-                    b.Property<DateTime>("Inicio");
-
-                    b.Property<bool>("PerdaTotal");
-
-                    b.Property<int?>("UsuarioId");
-
-                    b.Property<decimal>("Valor");
-
-                    b.Property<int?>("VeiculoId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.HasIndex("VeiculoId");
-
-                    b.ToTable("Seguro");
-                });
-
-            modelBuilder.Entity("Locacao.Models.Sinistro", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Data");
-
-                    b.Property<string>("Local");
-
-                    b.Property<bool>("PerdaTotal");
-
-                    b.Property<int?>("UsuarioId");
-
-                    b.Property<int?>("VeiculoId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.HasIndex("VeiculoId");
-
-                    b.ToTable("Sinistro");
-                });
-
             modelBuilder.Entity("Locacao.Models.StatusPedido", b =>
                 {
                     b.Property<int>("Id")
@@ -217,35 +117,11 @@ namespace Locacao.Migrations
 
                     b.Property<string>("Modelo");
 
-                    b.Property<string>("Placa");
-
                     b.Property<decimal>("ValorDiaria");
 
                     b.HasKey("Id");
 
                     b.ToTable("Veiculo");
-                });
-
-            modelBuilder.Entity("Locacao.Models.EntradaSaidaVeiculo", b =>
-                {
-                    b.HasOne("Locacao.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId");
-
-                    b.HasOne("Locacao.Models.Veiculo", "Veiculo")
-                        .WithMany()
-                        .HasForeignKey("VeiculoId");
-                });
-
-            modelBuilder.Entity("Locacao.Models.Multa", b =>
-                {
-                    b.HasOne("Locacao.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId");
-
-                    b.HasOne("Locacao.Models.Veiculo", "Veiculo")
-                        .WithMany()
-                        .HasForeignKey("VeiculoId");
                 });
 
             modelBuilder.Entity("Locacao.Models.Pedido", b =>
@@ -273,28 +149,6 @@ namespace Locacao.Migrations
                     b.HasOne("Locacao.Models.Usuario", "usuario")
                         .WithMany()
                         .HasForeignKey("usuarioId");
-                });
-
-            modelBuilder.Entity("Locacao.Models.Seguro", b =>
-                {
-                    b.HasOne("Locacao.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId");
-
-                    b.HasOne("Locacao.Models.Veiculo", "Veiculo")
-                        .WithMany()
-                        .HasForeignKey("VeiculoId");
-                });
-
-            modelBuilder.Entity("Locacao.Models.Sinistro", b =>
-                {
-                    b.HasOne("Locacao.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId");
-
-                    b.HasOne("Locacao.Models.Veiculo", "Veiculo")
-                        .WithMany()
-                        .HasForeignKey("VeiculoId");
                 });
 #pragma warning restore 612, 618
         }

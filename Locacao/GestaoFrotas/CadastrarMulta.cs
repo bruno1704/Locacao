@@ -15,13 +15,20 @@ namespace GestaoDeFrota.inicio
     public partial class CadastrarMulta : Form
     {
         readonly VeiculoRepository reposVeiculo = new VeiculoRepository(new ApplicationContext());
-        readonly MultaRepository repos = new MultaRepository(new ApplicationContext());
-        
-
+        readonly MultaRepository repos = new MultaRepository(new ApplicationContext());    
         readonly UsuarioRepository reposUsuario = new UsuarioRepository(new ApplicationContext());
         public CadastrarMulta()
         {
             InitializeComponent();
+            //cmbUsers.DataBindings.Add = reposUsuario.BuscaListaUsuario();
+            foreach (var i in reposUsuario.BuscaListaUsuario())
+            {
+                cmbUsers.Items.Add(i.Nome);
+            }
+            foreach (var i in reposVeiculo.BuscaListaVeiculo())
+            {
+                cmbUsers.Items.Add(i.Placa);
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -30,13 +37,14 @@ namespace GestaoDeFrota.inicio
 
             multa.Valor = Convert.ToDecimal(TxtValor.Text);
             multa.Local = TxtLocal.Text;
-            multa.Veiculo = reposVeiculo.RetornarPorVeiculo(TxtVeiculo.Text);
+            multa.Data = Dt.Value;
+            multa.VeiculoId = reposVeiculo.RetornarPorPlaca(cmbMulta.SelectedItem.ToString()).Id;
             multa.Ponto = Convert.ToInt32(TxtPonto.Text);
-            multa.Usuario = reposUsuario.RetornarPorEmail(TxtUsuario.Text);
+            multa.UsuarioId = reposUsuario.RetornarPorEmail(cmbUsers.SelectedItem.ToString()).Id;
 
-            repos.SaveMulta(multa);
+            //repos.SaveMulta(multa);
 
-            if (multa.Valor != 00 && multa.Local != null && multa.Veiculo != null && multa.Ponto != 00 && multa.Usuario != null)
+            if (multa.Valor != 0 && multa.Local != null && multa.VeiculoId != 0 && multa.Ponto != 00 && multa.UsuarioId != 0)
             {
                 repos.SaveMulta(multa);
 
@@ -51,7 +59,7 @@ namespace GestaoDeFrota.inicio
 
                     MessageBox.Show("O campo valor não pode seer vazio");
                 }
-                else if(multa.Local == null && multa.Veiculo == null && multa.Ponto == 00 && multa.Usuario == null)
+                else if(multa.Local == null && multa.VeiculoId == 0 && multa.Ponto == 00 && multa.UsuarioId == 0)
                 {
                     MessageBox.Show(" Os campos não podem ser vazio");
 

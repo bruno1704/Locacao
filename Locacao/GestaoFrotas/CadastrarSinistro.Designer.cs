@@ -30,13 +30,14 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.TxtVeiculo = new System.Windows.Forms.TextBox();
             this.TxtLocal = new System.Windows.Forms.TextBox();
-            this.TxtPerdaTotal = new System.Windows.Forms.TextBox();
-            this.TxtUsuario = new System.Windows.Forms.TextBox();
             this.BtnCadastar = new System.Windows.Forms.Button();
+            this.chkSin = new System.Windows.Forms.CheckBox();
+            this.cmbVei = new System.Windows.Forms.ComboBox();
+            this.cmbUsu = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.DtSini = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -57,55 +58,25 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Local";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 99);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Perda Total";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(62, 133);
+            this.label4.Location = new System.Drawing.Point(62, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Usuario";
             // 
-            // TxtVeiculo
-            // 
-            this.TxtVeiculo.Location = new System.Drawing.Point(143, 34);
-            this.TxtVeiculo.Name = "TxtVeiculo";
-            this.TxtVeiculo.Size = new System.Drawing.Size(209, 20);
-            this.TxtVeiculo.TabIndex = 4;
-            // 
             // TxtLocal
             // 
             this.TxtLocal.Location = new System.Drawing.Point(143, 64);
             this.TxtLocal.Name = "TxtLocal";
-            this.TxtLocal.Size = new System.Drawing.Size(209, 20);
+            this.TxtLocal.Size = new System.Drawing.Size(167, 20);
             this.TxtLocal.TabIndex = 5;
-            // 
-            // TxtPerdaTotal
-            // 
-            this.TxtPerdaTotal.Location = new System.Drawing.Point(143, 96);
-            this.TxtPerdaTotal.Name = "TxtPerdaTotal";
-            this.TxtPerdaTotal.Size = new System.Drawing.Size(209, 20);
-            this.TxtPerdaTotal.TabIndex = 6;
-            // 
-            // TxtUsuario
-            // 
-            this.TxtUsuario.Location = new System.Drawing.Point(143, 130);
-            this.TxtUsuario.Name = "TxtUsuario";
-            this.TxtUsuario.Size = new System.Drawing.Size(209, 20);
-            this.TxtUsuario.TabIndex = 7;
             // 
             // BtnCadastar
             // 
-            this.BtnCadastar.Location = new System.Drawing.Point(277, 170);
+            this.BtnCadastar.Location = new System.Drawing.Point(288, 246);
             this.BtnCadastar.Name = "BtnCadastar";
             this.BtnCadastar.Size = new System.Drawing.Size(75, 23);
             this.BtnCadastar.TabIndex = 8;
@@ -113,23 +84,70 @@
             this.BtnCadastar.UseVisualStyleBackColor = true;
             this.BtnCadastar.Click += new System.EventHandler(this.BtnCadastar_Click);
             // 
+            // chkSin
+            // 
+            this.chkSin.AutoSize = true;
+            this.chkSin.Location = new System.Drawing.Point(143, 196);
+            this.chkSin.Name = "chkSin";
+            this.chkSin.Size = new System.Drawing.Size(128, 17);
+            this.chkSin.TabIndex = 9;
+            this.chkSin.Text = "Roubo e Perda Total ";
+            this.chkSin.UseVisualStyleBackColor = true;
+            this.chkSin.CheckedChanged += new System.EventHandler(this.Master_CheckedChanged);
+            // 
+            // cmbVei
+            // 
+            this.cmbVei.FormattingEnabled = true;
+            this.cmbVei.Location = new System.Drawing.Point(143, 26);
+            this.cmbVei.Name = "cmbVei";
+            this.cmbVei.Size = new System.Drawing.Size(167, 21);
+            this.cmbVei.TabIndex = 15;
+            // 
+            // cmbUsu
+            // 
+            this.cmbUsu.FormattingEnabled = true;
+            this.cmbUsu.Location = new System.Drawing.Point(143, 107);
+            this.cmbUsu.Name = "cmbUsu";
+            this.cmbUsu.Size = new System.Drawing.Size(167, 21);
+            this.cmbUsu.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(62, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Data";
+            // 
+            // DtSini
+            // 
+            this.DtSini.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DtSini.Location = new System.Drawing.Point(143, 159);
+            this.DtSini.Name = "DtSini";
+            this.DtSini.Size = new System.Drawing.Size(128, 20);
+            this.DtSini.TabIndex = 18;
+            // 
             // CadastrarSinistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.BtnCadastar);
-            this.Controls.Add(this.TxtUsuario);
-            this.Controls.Add(this.TxtPerdaTotal);
-            this.Controls.Add(this.TxtLocal);
-            this.Controls.Add(this.TxtVeiculo);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.DtSini);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbUsu);
+            this.Controls.Add(this.cmbVei);
+            this.Controls.Add(this.chkSin);
+            this.Controls.Add(this.BtnCadastar);
+            this.Controls.Add(this.TxtLocal);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "CadastrarSinistro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastrarSinistro";
-            this.Load += new System.EventHandler(this.CadastrarSinistro_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CadastrarSinistro_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,12 +157,13 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TxtVeiculo;
         private System.Windows.Forms.TextBox TxtLocal;
-        private System.Windows.Forms.TextBox TxtPerdaTotal;
-        private System.Windows.Forms.TextBox TxtUsuario;
         private System.Windows.Forms.Button BtnCadastar;
+        private System.Windows.Forms.CheckBox chkSin;
+        private System.Windows.Forms.ComboBox cmbVei;
+        private System.Windows.Forms.ComboBox cmbUsu;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker DtSini;
     }
 }

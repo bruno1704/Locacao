@@ -1,6 +1,7 @@
 ﻿using GestaoDeFrota.inicio.Model;
 using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace GestaoDeFrota.inicio.Repositories
             var idEncontrado = new Multa();
             try
             {
-                idEncontrado = context.Set<Multa>().Where(w => w.Usuario == Usuario).FirstOrDefault(); // faz a busca no banco de dados
+                idEncontrado = context.Set<Multa>().Where(w => w.UsuarioId == Usuario.Id).FirstOrDefault(); // faz a busca no banco de dados
             }
             catch (Exception e)
             {
@@ -87,7 +88,7 @@ namespace GestaoDeFrota.inicio.Repositories
         }
         public Multa RetornarMultaPorVeiculo(Veiculo veiculo)
         {
-            var multa = context.Set<Multa>().Where(w => w.Veiculo == veiculo).FirstOrDefault();
+            var multa = context.Set<Multa>().Where(w => w.VeiculoId == veiculo.Id).FirstOrDefault();
 
             return multa;
 

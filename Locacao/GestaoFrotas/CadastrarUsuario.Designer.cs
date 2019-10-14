@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.BtnCadastrar = new System.Windows.Forms.Button();
+            this.Master = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // TxtNome
@@ -96,11 +97,24 @@
             this.BtnCadastrar.UseVisualStyleBackColor = true;
             this.BtnCadastrar.Click += new System.EventHandler(this.BtnCadastrar_Click);
             // 
+            // Master
+            // 
+            this.Master.AutoSize = true;
+            this.Master.Location = new System.Drawing.Point(245, 110);
+            this.Master.Name = "Master";
+            this.Master.Size = new System.Drawing.Size(58, 17);
+            this.Master.TabIndex = 7;
+            this.Master.Text = "Master";
+            this.Master.UseVisualStyleBackColor = true;
+            this.Master.CheckedChanged += new System.EventHandler(this.Master_CheckedChanged);
+            // 
             // CadastrarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Master);
             this.Controls.Add(this.BtnCadastrar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -124,5 +138,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button BtnCadastrar;
+        private System.Windows.Forms.CheckBox Master;
     }
 }

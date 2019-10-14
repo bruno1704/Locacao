@@ -12,8 +12,17 @@ namespace Locacao.Models
         //public DetalheVeiculo DetalheVeiculo { get; set; }
         public bool Completo { get; set; }
         public string Marca { get; set; }
+        public string Placa { get; set; }
         public decimal ValorDiaria { get; set; }
 
+    }
+
+    public class EntradaSaidaVeiculo : BaseModel
+    {
+        public Usuario Usuario { get; set; }
+        public Veiculo Veiculo { get; set; }
+        public DateTime Retirada { get; set; }
+        public DateTime Entrega { get; set; }
     }
 
     //public class DetalheVeiculo:BaseModel
@@ -35,8 +44,7 @@ namespace Locacao.Models
     public class Pedido : BaseModel
     {
         [Required]
-        public Reserva Reserva { get; private set; }
-        
+        public Reserva Reserva { get; private set; }       
        
         
         [Required]

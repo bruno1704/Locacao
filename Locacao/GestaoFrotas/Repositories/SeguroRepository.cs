@@ -32,12 +32,18 @@ namespace GestaoDeFrota.inicio.Repositories
             }
    
         }
+
+        internal IEnumerable<object> BuscarListaSeguro()
+        {
+            throw new NotImplementedException();
+        }
+
         public Seguro BuscaUsuarioExistente(Usuario Usuario)
         {
             var idEncontrado = new Seguro();
             try
             {
-                idEncontrado = context.Set<Seguro>().Where(w => w.Usuario == Usuario).FirstOrDefault(); // faz a busca no banco de dados
+                idEncontrado = context.Set<Seguro>().Where(w => w.UsuarioId == Usuario.Id).FirstOrDefault(); // faz a busca no banco de dados
                 //propriedade seguro é o mesmo que usuario?
                 //ja te falei que tudo que é usuario muda pra seguro a nao ser que tenho um usuario dentro da seguro
                 //aparentemetne nao esta comparando direito as propriedades

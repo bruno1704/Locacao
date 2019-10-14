@@ -8,10 +8,13 @@ namespace GestaoDeFrota
 {
     public class Usuario : BaseModel
     {
-        [Required]
-        public string Senha { get; set; }
-        public string Nome { get; set; }
+        [Required]               
         public string Email { get; set; }
+
+        public string Nome { get; set; }
+
+        public string Senha { get; set; }
+
 
         public bool Administrador { get; set; }
         //public object Veiculo { get; set; }

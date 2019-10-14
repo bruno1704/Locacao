@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,13 +31,13 @@ namespace GestaoDeFrota.inicio.Repositories
             }
 
         }
-        public Veiculo BuscausuarioExistente(Usuario Usuario)
+        public Veiculo BuscausuarioExistente(String Marca)
         {
-            var idEncontrado = new Veiculo();
+            var VeiculoEncontrado = new Veiculo();
             try
             {
 
-                idEncontrado = context.Set<Veiculo>().Where(w => w.Usuario == Usuario).FirstOrDefault();
+                VeiculoEncontrado = context.Set<Veiculo>().Where(w => w.Marca == Marca).FirstOrDefault();
             }
             catch (Exception e)
             {
@@ -45,10 +46,10 @@ namespace GestaoDeFrota.inicio.Repositories
 
 
 
-            if (idEncontrado != null)
+            if (VeiculoEncontrado != null)
             {
 
-                return idEncontrado;
+                return VeiculoEncontrado;
             }
             else
             {
@@ -72,21 +73,48 @@ namespace GestaoDeFrota.inicio.Repositories
             }
 
         }
+
+        internal object RetornarPorPlaca(object veiculoId)
+        {
+            throw new NotImplementedException();
+        }
+
         public Veiculo RetornarPorVeiculo(string veiculo)
         {
-            var Veiculo = context.Set<Veiculo>().Where(w => w.veiculo == veiculo).FirstOrDefault();
+            var Veiculo = context.Set<Veiculo>().Where(w => w.Marca == veiculo).FirstOrDefault();
 
             return Veiculo;
 
         }
         public Veiculo RetornarPorCompleto(string completo)
         {
-            var Completo = context.Set<Veiculo>().Where(w => w.completo == completo).FirstOrDefault();
+            var Completo = context.Set<Veiculo>().Where(w => w.Marca == completo).FirstOrDefault();
 
             return Completo;
 
         }
+        public Veiculo RetornarPorNome(string veiculo)
+        {
+            var Veiculo = context.Set<Veiculo>().Where(w => w.Modelo == veiculo).FirstOrDefault();
 
+            return Veiculo;
+        }
+        public Veiculo RetornarPorPlaca(String Placa)
+        {
+            var Veiculo = context.Set<Veiculo>().Where(w => w.Placa == Placa).FirstOrDefault();
+
+            //return Veiculo
+
+            if(Veiculo != null)
+            {
+                return Veiculo;
+            }
+            else
+            {
+
+                return new Veiculo();
+            }
+        }
     }
 
 
