@@ -200,7 +200,19 @@ namespace GestaoDeFrota
 
            
         }
-        
+
+        public void DeletarUsuario(Usuario user)//void não retorna nada
+        {
+
+
+
+            //context.Set<Usuario>().Add(user);//contexto é o banco dados
+                var x = dbSet.Remove(user);
+                context.SaveChanges();//salva
+            
+
+        }
+
 
     }
 

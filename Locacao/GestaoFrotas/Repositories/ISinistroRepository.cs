@@ -17,7 +17,7 @@ namespace GestaoDeFrota.inicio.Repositories
 
         Usuario RetornarPorEmail(string nome);
 
-        
+        void DeletarSinistro(Sinistro user);
 
 
 

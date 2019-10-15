@@ -15,7 +15,10 @@ namespace GestaoDeFrota.inicio.Repositories
 
          List<Seguro> BuscaListaSeguro();
 
-        
+         void DeletarSeguro(Seguro user);
+
+
+
 
     }
 }

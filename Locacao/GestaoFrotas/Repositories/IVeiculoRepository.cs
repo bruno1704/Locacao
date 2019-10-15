@@ -22,6 +22,8 @@ namespace GestaoDeFrota.inicio.Repositories
 
         Veiculo RetornarPorPlaca(String Placa);
 
+        void DeletarVeiculo(Veiculo user);
+
 
 
     }

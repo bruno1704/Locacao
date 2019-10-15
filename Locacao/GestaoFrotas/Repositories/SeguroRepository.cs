@@ -79,6 +79,19 @@ namespace GestaoDeFrota.inicio.Repositories
             }
 
         }
+        public void DeletarSeguro(Seguro user)
+        {
+            try
+            {
+                var se = dbSet.Remove(user);
+                context.SaveChanges();
+            }
+            catch(Exception e)
+            {
 
+
+            }
+
+        }
     }
 }

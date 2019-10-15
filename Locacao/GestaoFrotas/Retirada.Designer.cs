@@ -102,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(790, 450);
             this.Controls.Add(this.BtaCadastrarR);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.DtRet);

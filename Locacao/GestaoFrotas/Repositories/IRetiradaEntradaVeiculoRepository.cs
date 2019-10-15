@@ -8,5 +8,7 @@ namespace GestaoDeFrota.inicio.Repositories
         List<EntradaSaidaVeiculo> BuscaListaEntradaSaidaVeiculo();
 
         bool ExisteEntrega(int id, string data);
+
+        void DeletarEntradaeSaida(EntradaSaidaVeiculo user);
     }
 }

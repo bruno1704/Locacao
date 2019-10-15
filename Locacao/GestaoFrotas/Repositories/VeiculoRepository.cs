@@ -115,6 +115,21 @@ namespace GestaoDeFrota.inicio.Repositories
                 return new Veiculo();
             }
         }
+
+        public void DeletarVeiculo(Veiculo user)
+        {
+            try
+            {
+                var v = dbSet.Remove(user);
+                context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+
+            }
+          
+
+        }
     }
 
 

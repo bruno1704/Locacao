@@ -63,6 +63,22 @@ namespace GestaoDeFrota.inicio.Repositories
                 return new List<EntradaSaidaVeiculo>();
             }
 
+
+        }
+        public void DeletarEntradaeSaida(EntradaSaidaVeiculo user)
+        {
+            try
+            {
+                var ES = dbSet.Remove(user);
+                context.SaveChanges();
+
+            }
+            catch (Exception e)
+            {
+
+
+            }
+
         }
     }
 }

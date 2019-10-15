@@ -73,6 +73,22 @@ namespace GestaoDeFrota.inicio.Repositories
 
             return usuario;
         }
+        public void DeletarSinistro(Sinistro user)
+        {
+            try
+            {
+                var s = dbSet.Remove(user);
+                context.SaveChanges();
+
+            }
+            catch(Exception e)
+            {
+
+
+            }
+
+
+        }
 
         
 

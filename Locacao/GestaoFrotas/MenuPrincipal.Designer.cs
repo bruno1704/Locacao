@@ -48,9 +48,10 @@
             this.retiradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entregaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.DtgMenuP = new System.Windows.Forms.DataGridView();
-            this.BtnGravar = new System.Windows.Forms.Button();
             this.TxtTitulo = new System.Windows.Forms.TextBox();
+            this.BtnGravar = new System.Windows.Forms.Button();
+            this.DtgMenuP = new System.Windows.Forms.DataGridView();
+            this.BtnDeletar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DtgMenuP)).BeginInit();
@@ -162,7 +163,7 @@
             // editarToolStripMenuItem3
             // 
             this.editarToolStripMenuItem3.Name = "editarToolStripMenuItem3";
-            this.editarToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.editarToolStripMenuItem3.Size = new System.Drawing.Size(124, 22);
             this.editarToolStripMenuItem3.Text = "Editar";
             this.editarToolStripMenuItem3.Click += new System.EventHandler(this.editarToolStripMenuItem3_Click);
             // 
@@ -185,7 +186,7 @@
             // editarToolStripMenuItem4
             // 
             this.editarToolStripMenuItem4.Name = "editarToolStripMenuItem4";
-            this.editarToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.editarToolStripMenuItem4.Size = new System.Drawing.Size(124, 22);
             this.editarToolStripMenuItem4.Text = "Editar";
             this.editarToolStripMenuItem4.Click += new System.EventHandler(this.editarToolStripMenuItem4_Click);
             // 
@@ -201,19 +202,20 @@
             // retiradaToolStripMenuItem
             // 
             this.retiradaToolStripMenuItem.Name = "retiradaToolStripMenuItem";
-            this.retiradaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.retiradaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.retiradaToolStripMenuItem.Text = "Retirada";
             this.retiradaToolStripMenuItem.Click += new System.EventHandler(this.retiradaToolStripMenuItem_Click);
             // 
             // entregaToolStripMenuItem
             // 
             this.entregaToolStripMenuItem.Name = "entregaToolStripMenuItem";
-            this.entregaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.entregaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.entregaToolStripMenuItem.Text = "Entrega";
             this.entregaToolStripMenuItem.Click += new System.EventHandler(this.entregaToolStripMenuItem_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BtnDeletar);
             this.panel1.Controls.Add(this.TxtTitulo);
             this.panel1.Controls.Add(this.BtnGravar);
             this.panel1.Controls.Add(this.DtgMenuP);
@@ -221,24 +223,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 411);
             this.panel1.TabIndex = 1;
-            // 
-            // DtgMenuP
-            // 
-            this.DtgMenuP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DtgMenuP.Location = new System.Drawing.Point(3, 54);
-            this.DtgMenuP.Name = "DtgMenuP";
-            this.DtgMenuP.Size = new System.Drawing.Size(744, 290);
-            this.DtgMenuP.TabIndex = 0;
-            // 
-            // BtnGravar
-            // 
-            this.BtnGravar.Location = new System.Drawing.Point(631, 366);
-            this.BtnGravar.Name = "BtnGravar";
-            this.BtnGravar.Size = new System.Drawing.Size(116, 23);
-            this.BtnGravar.TabIndex = 1;
-            this.BtnGravar.Text = "Gravar";
-            this.BtnGravar.UseVisualStyleBackColor = true;
-            this.BtnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
             // 
             // TxtTitulo
             // 
@@ -250,6 +234,34 @@
             this.TxtTitulo.ReadOnly = true;
             this.TxtTitulo.Size = new System.Drawing.Size(150, 26);
             this.TxtTitulo.TabIndex = 2;
+            // 
+            // BtnGravar
+            // 
+            this.BtnGravar.Location = new System.Drawing.Point(631, 366);
+            this.BtnGravar.Name = "BtnGravar";
+            this.BtnGravar.Size = new System.Drawing.Size(116, 23);
+            this.BtnGravar.TabIndex = 1;
+            this.BtnGravar.Text = "Gravar";
+            this.BtnGravar.UseVisualStyleBackColor = true;
+            this.BtnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
+            // 
+            // DtgMenuP
+            // 
+            this.DtgMenuP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DtgMenuP.Location = new System.Drawing.Point(3, 54);
+            this.DtgMenuP.Name = "DtgMenuP";
+            this.DtgMenuP.Size = new System.Drawing.Size(744, 290);
+            this.DtgMenuP.TabIndex = 0;
+            // 
+            // BtnDeletar
+            // 
+            this.BtnDeletar.Location = new System.Drawing.Point(480, 366);
+            this.BtnDeletar.Name = "BtnDeletar";
+            this.BtnDeletar.Size = new System.Drawing.Size(116, 23);
+            this.BtnDeletar.TabIndex = 3;
+            this.BtnDeletar.Text = "Deletar";
+            this.BtnDeletar.UseVisualStyleBackColor = true;
+            this.BtnDeletar.Click += new System.EventHandler(this.BtnDeletar_Click);
             // 
             // MenuPrincipal
             // 
@@ -296,5 +308,6 @@
         private System.Windows.Forms.ToolStripMenuItem entregaToolStripMenuItem;
         private System.Windows.Forms.Button BtnGravar;
         private System.Windows.Forms.TextBox TxtTitulo;
+        private System.Windows.Forms.Button BtnDeletar;
     }
 }

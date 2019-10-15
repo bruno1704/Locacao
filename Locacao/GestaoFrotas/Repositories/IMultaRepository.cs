@@ -17,5 +17,7 @@ namespace GestaoDeFrota.inicio.Repositories
         List<Multa> BuscaListaMulta();
 
         Multa RetornarMultaPorVeiculo(Veiculo veiculo);
+
+        void DeletarMulta(Multa user);
     }
 }

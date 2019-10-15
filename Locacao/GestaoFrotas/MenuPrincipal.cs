@@ -70,6 +70,7 @@ namespace GestaoDeFrota.inicio
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var listausuario = reposUsuario.BuscaListaUsuario();
+            panel1.Visible = true;
             DtgMenuP.DataSource = listausuario;
             TxtTitulo.Text = "Edição Usuario";
         }
@@ -211,6 +212,117 @@ namespace GestaoDeFrota.inicio
             DtgMenuP.DataSource = ListaSeguro;
 
             TxtTitulo.Text = "Edição Seguro";
+        }
+
+        private void BtnDeletar_Click(object sender, EventArgs e)
+        {
+            // aqui vai a lógica 
+            try
+            {//se der algum erro vai no catch senao continua no case
+                var l = DtgMenuP.SelectedRows[0].DataBoundItem.ToString();
+
+                switch (l)
+                {
+                    case "GestaoDeFrota.Usuario":
+                        var u = (Usuario)DtgMenuP.SelectedRows[0].DataBoundItem;
+
+                        reposUsuario.DeletarUsuario(u);
+
+                        //força atualizar a lista
+                        var listaatualizadausuario = reposUsuario.BuscaListaUsuario();
+
+                        DtgMenuP.DataSource = listaatualizadausuario;
+
+                        MessageBox.Show("Registro Deletado com Sucesso não sera possivel recuperar ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        break;
+
+                    case "trocapleopçãoselecionada vai vir na variavel l (L)":
+                    //sua  logica aqui
+
+
+                    //faz os outros qlqr coisa me manda msg no hanout
+
+                    case "GestaoDeFrota.Veiculo":
+                        var vei = (Veiculo)DtgMenuP.SelectedRows[0].DataBoundItem;
+
+                        reposCompleto.DeletarVeiculo(vei);
+
+                        var Listaatualizadaveiculo = reposCompleto.BuscaListaVeiculo();
+
+                        DtgMenuP.DataSource = Listaatualizadaveiculo;
+
+                        MessageBox.Show("Registro Deletado com Sucesso não sera possivel recuperar ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+
+                        break;
+
+                    case "GestaoDeFrota.Multa":
+
+                        var Mul = (Multa)DtgMenuP.SelectedRows[0].DataBoundItem;
+
+                        reposMulta.DeletarMulta(Mul);
+
+                        var listaatualizadamulta = reposMulta.BuscaListaMulta();
+
+                        DtgMenuP.DataSource = listaatualizadamulta;
+
+                        MessageBox.Show("Registro Deletado com Sucesso não sera possivel recuperar ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+
+                        break;
+
+                    case "GestaoDeFrota.Sinistro":
+
+                        var Sin = (Sinistro)DtgMenuP.SelectedRows[0].DataBoundItem;
+
+                        reposSinistro.DeletarSinistro(Sin);
+
+                        var listaatualizadasinistro = reposSinistro.BuscaListaSinistro();
+
+                        DtgMenuP.DataSource = listaatualizadasinistro;
+
+                        MessageBox.Show("Registro Deletado com Sucesso não sera possivel recuperar ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+
+
+
+                        break;
+                    case "GestãoDeFrota.Seguro":
+
+                        var Seg = (Seguro)DtgMenuP.SelectedRows[0].DataBoundItem;
+
+                        reposSeguro.DeletarSeguro(Seg);
+
+                        var listaatualizadaseguro = reposSeguro.BuscarListaSeguro();
+
+                        DtgMenuP.DataSource = listaatualizadaseguro;
+
+                        MessageBox.Show("Registro Deletado com Sucesso não sera possivel recuperar ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+
+                        break;
+
+                    case "GestaoDeFrota.EntradaSaidaVeiculo":
+
+                         var ES = (EntradaSaidaVeiculo)DtgMenuP.SelectedRows[0].DataBoundItem;
+                        reposRetirada.DeletarEntradaeSaida(ES);
+                        var listaatualizadaRetirada = reposRetirada.BuscaListaEntradaSaidaVeiculo();
+                        DtgMenuP.DataSource = listaatualizadaRetirada;
+
+                        MessageBox.Show("Registro Deletado com Sucesso não sera possivel recuperar ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        break;
+
+
+                }
+            }
+            catch (Exception )
+            {
+                MessageBox.Show("Nenhuma Linha Selecionada, Selecione atraves do icone " + ">", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+          
+                
         }
     }
 }

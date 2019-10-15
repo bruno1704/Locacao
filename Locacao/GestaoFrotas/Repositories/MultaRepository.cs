@@ -94,5 +94,21 @@ namespace GestaoDeFrota.inicio.Repositories
 
 
         }
+        public void DeletarMulta(Multa user)
+        {
+            try
+            {
+                var M = dbSet.Remove(user);
+                context.SaveChanges();
+
+            }
+            catch(Exception e )
+            {
+
+
+            }
+            
+
+        }
     }
 }
