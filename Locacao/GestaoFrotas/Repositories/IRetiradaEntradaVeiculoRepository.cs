@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GestaoDeFrota.inicio.Repositories
 {
@@ -7,7 +8,9 @@ namespace GestaoDeFrota.inicio.Repositories
         void SaveEntradaSaidaVeiculo(EntradaSaidaVeiculo EntradaSaidaVeiculo);
         List<EntradaSaidaVeiculo> BuscaListaEntradaSaidaVeiculo();
 
-        bool ExisteEntrega(int id, string data);
+        //bool ExisteEntrega(int id, string data);
+
+         Task<(bool, EntradaSaidaVeiculo)> ExisteEntrega(int id, string data);
 
         void DeletarEntradaeSaida(EntradaSaidaVeiculo user);
     }

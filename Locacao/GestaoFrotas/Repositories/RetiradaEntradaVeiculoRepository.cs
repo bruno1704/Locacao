@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity.Core.Mapping;
 
 namespace GestaoDeFrota.inicio.Repositories
 {
@@ -33,19 +34,21 @@ namespace GestaoDeFrota.inicio.Repositories
 
         }
 
-        public bool ExisteEntrega(int id, string data)//void não retorna nada
+         public async Task<(bool,EntradaSaidaVeiculo)> ExisteEntrega(int id, string data)//void não retorna nada
         {
-            var existe = context.Set<EntradaSaidaVeiculo>()
-                .Where(x => x.Id==id).FirstOrDefault();
+            var existe = await
+                 Task.Run(() =>  
+                 context.Set<EntradaSaidaVeiculo>()
+                .Where(x => x.Id==id).FirstOrDefault()
+                );           
 
             if (existe.Entrega.ToString()==data)
             {
-
-                return false;
+                return (false, new EntradaSaidaVeiculo());
             }
             else
             {
-                return true;
+                return (true, existe);
             }
 
         }

@@ -225,17 +225,25 @@
       <DependentUpon>form.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositories\IMultaRepository.cs" />
+    <Compile Include="Repositories\IReservaRepository.cs" />
     <Compile Include="Repositories\IRetiradaEntradaVeiculoRepository.cs" />
     <Compile Include="Repositories\ISeguroRepository.cs" />
     <Compile Include="Repositories\ISinistroRepository.cs" />
     <Compile Include="Repositories\IUsuarioRepository.cs" />
     <Compile Include="Repositories\IVeiculoRepository.cs" />
     <Compile Include="Repositories\MultaRepository.cs" />
+    <Compile Include="Repositories\ReservarRepository.cs" />
     <Compile Include="Repositories\RetiradaEntradaVeiculoRepository.cs" />
     <Compile Include="Repositories\SeguroRepository.cs" />
     <Compile Include="Repositories\SinistroRepository.cs" />
     <Compile Include="Repositories\UsuarioRepository.cs" />
     <Compile Include="Repositories\VeiculoRepository.cs" />
+    <Compile Include="ReservaCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReservaCadastrar.Designer.cs">
+      <DependentUpon>ReservaCadastrar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Retirada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReservaCadastrar.resx">
+      <DependentUpon>ReservaCadastrar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Retirada.resx">
       <DependentUpon>Retirada.cs</DependentUpon>

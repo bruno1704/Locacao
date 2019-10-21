@@ -19,6 +19,7 @@ namespace GestaoDeFrota.inicio
         readonly UsuarioRepository reposUsuario = new UsuarioRepository(new ApplicationContext());
         public CadastrarMulta()
         {
+            //aqui monta os componetnes do form
             InitializeComponent();
             //cmbUsers.DataBindings.Add = reposUsuario.BuscaListaUsuario();
             foreach (var i in reposUsuario.BuscaListaUsuario())
@@ -27,7 +28,7 @@ namespace GestaoDeFrota.inicio
             }
             foreach (var i in reposVeiculo.BuscaListaVeiculo())
             {
-                cmbUsers.Items.Add(i.Placa);
+                cmbMulta.Items.Add(i.Placa);
             }
         }
 

@@ -29,6 +29,8 @@ namespace Locacao.Controllers
 
         public IActionResult Index()
         {
+
+
             return View();
 
         }

@@ -47,11 +47,14 @@
             this.entradaSaidaVeiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.retiradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entregaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reservarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastrarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnDeletar = new System.Windows.Forms.Button();
             this.TxtTitulo = new System.Windows.Forms.TextBox();
             this.BtnGravar = new System.Windows.Forms.Button();
             this.DtgMenuP = new System.Windows.Forms.DataGridView();
-            this.BtnDeletar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DtgMenuP)).BeginInit();
@@ -65,7 +68,8 @@
             this.multaToolStripMenuItem,
             this.sinistoToolStripMenuItem,
             this.seguroToolStripMenuItem,
-            this.entradaSaidaVeiculoToolStripMenuItem});
+            this.entradaSaidaVeiculoToolStripMenuItem,
+            this.reservarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -213,6 +217,31 @@
             this.entregaToolStripMenuItem.Text = "Entrega";
             this.entregaToolStripMenuItem.Click += new System.EventHandler(this.entregaToolStripMenuItem_Click);
             // 
+            // reservarToolStripMenuItem
+            // 
+            this.reservarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrarToolStripMenuItem2,
+            this.editarToolStripMenuItem5});
+            this.reservarToolStripMenuItem.Name = "reservarToolStripMenuItem";
+            this.reservarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.reservarToolStripMenuItem.Text = "Reservar";
+            this.reservarToolStripMenuItem.Visible = false;
+            this.reservarToolStripMenuItem.Click += new System.EventHandler(this.reservarToolStripMenuItem_Click);
+            // 
+            // cadastrarToolStripMenuItem2
+            // 
+            this.cadastrarToolStripMenuItem2.Name = "cadastrarToolStripMenuItem2";
+            this.cadastrarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.cadastrarToolStripMenuItem2.Text = "Cadastrar";
+            this.cadastrarToolStripMenuItem2.Click += new System.EventHandler(this.cadastrarToolStripMenuItem2_Click);
+            // 
+            // editarToolStripMenuItem5
+            // 
+            this.editarToolStripMenuItem5.Name = "editarToolStripMenuItem5";
+            this.editarToolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.editarToolStripMenuItem5.Text = "Editar";
+            this.editarToolStripMenuItem5.Click += new System.EventHandler(this.editarToolStripMenuItem5_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.BtnDeletar);
@@ -223,6 +252,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 411);
             this.panel1.TabIndex = 1;
+            // 
+            // BtnDeletar
+            // 
+            this.BtnDeletar.Location = new System.Drawing.Point(480, 366);
+            this.BtnDeletar.Name = "BtnDeletar";
+            this.BtnDeletar.Size = new System.Drawing.Size(116, 23);
+            this.BtnDeletar.TabIndex = 3;
+            this.BtnDeletar.Text = "Deletar";
+            this.BtnDeletar.UseVisualStyleBackColor = true;
+            this.BtnDeletar.Click += new System.EventHandler(this.BtnDeletar_Click);
             // 
             // TxtTitulo
             // 
@@ -252,16 +291,6 @@
             this.DtgMenuP.Name = "DtgMenuP";
             this.DtgMenuP.Size = new System.Drawing.Size(744, 290);
             this.DtgMenuP.TabIndex = 0;
-            // 
-            // BtnDeletar
-            // 
-            this.BtnDeletar.Location = new System.Drawing.Point(480, 366);
-            this.BtnDeletar.Name = "BtnDeletar";
-            this.BtnDeletar.Size = new System.Drawing.Size(116, 23);
-            this.BtnDeletar.TabIndex = 3;
-            this.BtnDeletar.Text = "Deletar";
-            this.BtnDeletar.UseVisualStyleBackColor = true;
-            this.BtnDeletar.Click += new System.EventHandler(this.BtnDeletar_Click);
             // 
             // MenuPrincipal
             // 
@@ -309,5 +338,8 @@
         private System.Windows.Forms.Button BtnGravar;
         private System.Windows.Forms.TextBox TxtTitulo;
         private System.Windows.Forms.Button BtnDeletar;
+        private System.Windows.Forms.ToolStripMenuItem reservarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem5;
     }
 }

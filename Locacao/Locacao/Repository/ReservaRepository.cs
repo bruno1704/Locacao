@@ -94,5 +94,14 @@ namespace Locacao.Repository
             }
 
         }
+
+        public string algumacoisaretornaporstring(string parametrox)
+        {
+
+            var s = parametrox;
+
+
+            return "";
+        }
     }
 }

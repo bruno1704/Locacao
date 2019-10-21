@@ -23,16 +23,19 @@ namespace GestaoDeFrota.inicio
             var usuario = new Usuario();
 
             usuario.Nome = TxtNome.Text;
+            usuario.Cpf = textCPF.Text;
+            usuario.Telefone = textTelefone.Text;
+            usuario.DataDeNascimento = DtN.Value;
             usuario.Email = TxtEmail.Text;
             usuario.Senha = TxtSenha.Text;
             usuario.Administrador = Master.Checked;
 
             
-            if (usuario.Nome!="" && usuario.Senha!="" && usuario.Email!="")
+            if (usuario.Nome!="" && usuario.Cpf != "" && usuario.Telefone != "" && usuario.Senha != "" && usuario.Email != "")
             {
                 repos.SaveUsuario(usuario);
-                var msg = MessageBox.Show("Usuario Cadastrado com sucesso","",MessageBoxButtons.OK);
-        
+                var msg = MessageBox.Show("Usuario Cadastrado com sucesso", "", MessageBoxButtons.OK);
+
             }
             else
             {
@@ -44,7 +47,7 @@ namespace GestaoDeFrota.inicio
                 {
                     MessageBox.Show(" Campo Senha não pode ser vazio, preencha");
                 }
-                else
+                else  
                 {
                     MessageBox.Show( " Campo Email não pode ser vazio, preencha","Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -57,6 +60,16 @@ namespace GestaoDeFrota.inicio
         }
 
         private void Master_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CadastrarUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }

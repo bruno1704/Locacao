@@ -110,7 +110,9 @@ namespace GestaoDeFrota.inicio
 
         private void entregaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ListaRetirada = reposRetirada.BuscaListaEntradaSaidaVeiculo();
+            var ListaRetirada = reposRetirada.BuscaListaEntradaSaidaVeiculo().Select
+                (s=> new EntradaSaidaVeiculodto(s.Id,s.UsuarioId,s.VeiculoId,s.Retirada,s.Entrega)    
+            ).ToList();
 
             panel1.Visible = true;
 
@@ -119,7 +121,7 @@ namespace GestaoDeFrota.inicio
             TxtTitulo.Text = "Entrega Veículo";
         }
 
-        private void BtnGravar_Click(object sender, EventArgs e)
+        private async void BtnGravar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -138,12 +140,23 @@ namespace GestaoDeFrota.inicio
                                                
                        
                         break;
-                    case "GestaoDeFrota.EntradaSaidaVeiculo":
-                        var i = (EntradaSaidaVeiculo) DtgMenuP.SelectedRows[0].DataBoundItem;
+                    case "GestaoDeFrota.EntradaSaidaVeiculodto":
+                        var i = (EntradaSaidaVeiculodto) DtgMenuP.SelectedRows[0].DataBoundItem;
+
                         if (i.Entrega.ToString()!= "01/01/0001 00:00:00")
-                        {                            
-                                reposRetirada.SaveEntradaSaidaVeiculo(i);
+                        {
+                            var Retorno = await reposRetirada.ExisteEntrega(i.Id,i.Entrega.ToString());
+                            if (Retorno.Item1)
+                            {
+                                reposRetirada.SaveEntradaSaidaVeiculo(Retorno.Item2);
                                 MessageBox.Show("Data Entrega Realizada", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Data Entrega Realizada", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+
+                           
                           
                         }
                         else
@@ -226,22 +239,28 @@ namespace GestaoDeFrota.inicio
                     case "GestaoDeFrota.Usuario":
                         var u = (Usuario)DtgMenuP.SelectedRows[0].DataBoundItem;
 
-                        reposUsuario.DeletarUsuario(u);
+                        DialogResult confirm = MessageBox.Show
+                            ("Deseja Continuar?", "Deletar Usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
 
-                        //força atualizar a lista
-                        var listaatualizadausuario = reposUsuario.BuscaListaUsuario();
+                        if (confirm.ToString()=="Yes")
+                        {
+                            reposUsuario.DeletarUsuario(u);
 
-                        DtgMenuP.DataSource = listaatualizadausuario;
+                            //força atualizar a lista
+                            var listaatualizadausuario = reposUsuario.BuscaListaUsuario();
 
-                        MessageBox.Show("Registro Deletado com Sucesso não sera possivel recuperar ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            DtgMenuP.DataSource = listaatualizadausuario;
 
+                            MessageBox.Show("Registro Deletado com Sucesso não sera possivel recuperar ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Operacao Cancelada", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        
                         break;
-
-                    case "trocapleopçãoselecionada vai vir na variavel l (L)":
-                    //sua  logica aqui
-
-
-                    //faz os outros qlqr coisa me manda msg no hanout
+                 
 
                     case "GestaoDeFrota.Veiculo":
                         var vei = (Veiculo)DtgMenuP.SelectedRows[0].DataBoundItem;
@@ -303,7 +322,7 @@ namespace GestaoDeFrota.inicio
 
                         break;
 
-                    case "GestaoDeFrota.EntradaSaidaVeiculo":
+                    case "GestaoDeFrota.EntradaSaidaVeiculodto":
 
                          var ES = (EntradaSaidaVeiculo)DtgMenuP.SelectedRows[0].DataBoundItem;
                         reposRetirada.DeletarEntradaeSaida(ES);
@@ -323,6 +342,21 @@ namespace GestaoDeFrota.inicio
             }
           
                 
+        }
+
+        private void reservarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cadastrarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new ReservaCadastrar().Show();
+        }
+
+        private void editarToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
